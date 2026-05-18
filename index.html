@@ -3,553 +3,883 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Belinda Lin — Resume</title>
+  <title>Belinda Lin — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:   #1B2A4A;
-      --navy-l: #243556;
-      --gold:   #C9A84C;
-      --gold-l: #E8C96A;
-      --cream:  #F7F4EF;
-      --muted:  #6B7280;
-      --border: #DDD8CE;
-      --white:  #FFFFFF;
-      --text:   #1A1A2E;
+      --cream:    #F5F0E8;
+      --cream-d:  #EDE6D8;
+      --brown:    #3D2B1F;
+      --brown-m:  #6B4226;
+      --sienna:   #A0522D;
+      --tan:      #C4956A;
+      --tan-l:    #DDB896;
+      --muted:    #8C7B6E;
+      --white:    #FEFCF8;
     }
 
-    @media print {
-      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .page { box-shadow: none; margin: 0; border-radius: 0; max-width: 100%; }
-    }
+    html { scroll-behavior: smooth; }
 
     body {
-      background: #EDEAE3;
-      font-family: 'Noto Sans TC', 'Inter', sans-serif;
-      font-size: 14px;
+      background: var(--cream);
+      color: var(--brown);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
       line-height: 1.6;
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 40px 16px;
+      overflow-x: hidden;
     }
 
-    .page {
-      width: 100%;
-      max-width: 860px;
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.14);
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 260px 1fr;
-    }
-
-    /* ── Sidebar ── */
-    .sidebar {
-      background: var(--navy);
-      color: var(--white);
-      padding: 40px 28px;
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
       display: flex;
-      flex-direction: column;
-      gap: 32px;
-    }
-
-    .avatar-wrap {
-      display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      gap: 14px;
+      padding: 24px 60px;
+      mix-blend-mode: multiply;
     }
-
-    .avatar {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      border: 3px solid var(--gold);
-      background: var(--navy-l);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .avatar svg {
-      width: 64px;
-      height: 64px;
-      opacity: 0.5;
-    }
-
-    .name-block { text-align: center; }
-    .name-block h1 {
-      font-family: 'Noto Serif TC', serif;
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: var(--white);
-      line-height: 1.3;
-    }
-    .name-block .en-name {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      color: var(--gold-l);
-      text-transform: uppercase;
-      margin-top: 4px;
-    }
-    .name-block .title-pill {
-      display: inline-block;
-      margin-top: 10px;
-      background: var(--gold);
-      color: var(--navy);
-      font-size: 11px;
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
       font-weight: 600;
-      padding: 3px 12px;
-      border-radius: 20px;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
+      color: var(--brown);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--brown-m);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--sienna); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 120px 60px 80px;
+      gap: 60px;
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 42%;
+      background: var(--cream-d);
+      z-index: 0;
     }
 
-    /* Sidebar section */
-    .s-section { display: flex; flex-direction: column; gap: 10px; }
-    .s-title {
+    .hero-text { position: relative; z-index: 1; }
+    .hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sienna);
+      border-bottom: 1px solid var(--tan-l);
+      padding-bottom: 6px;
+      margin-bottom: 28px;
+    }
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(52px, 7vw, 88px);
+      font-weight: 400;
+      line-height: 1.05;
+      color: var(--brown);
+      letter-spacing: -0.01em;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--sienna);
+    }
+    .hero-desc {
+      margin-top: 28px;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 420px;
+    }
+    .hero-actions {
+      margin-top: 44px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .btn-resume {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--brown);
+      color: var(--cream);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: none;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .btn-resume:hover { background: var(--brown-m); transform: translateY(-1px); }
+    .btn-resume svg { width: 14px; height: 14px; }
+
+    .btn-contact {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--tan-l);
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+    .btn-contact:hover { color: var(--sienna); }
+
+    /* Hero visual */
+    .hero-visual {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .stat-row {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 8px;
+    }
+    .stat-item { display: flex; flex-direction: column; gap: 4px; }
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 36px;
+      color: var(--brown);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .expertise-block {
+      background: var(--white);
+      border: 1px solid var(--tan-l);
+      padding: 28px 32px;
+      width: 100%;
+      max-width: 380px;
+    }
+    .expertise-title {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--tan);
+      margin-bottom: 16px;
+    }
+    .expertise-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .expertise-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--brown-m);
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--cream-d);
+    }
+    .expertise-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .expertise-item span {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--tan);
+    }
+
+    /* ── ABOUT STRIP ── */
+    .about-strip {
+      background: var(--brown);
+      padding: 60px;
+      display: flex;
+      gap: 80px;
+      align-items: flex-start;
+    }
+    .about-label {
       font-size: 10px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 600;
-      padding-bottom: 6px;
-      border-bottom: 1px solid rgba(201,168,76,0.3);
-    }
-
-    /* Contact items */
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 12.5px;
-      color: rgba(255,255,255,0.82);
-      line-height: 1.4;
-    }
-    .contact-item .icon {
-      width: 16px;
-      height: 16px;
+      color: var(--tan);
+      white-space: nowrap;
+      padding-top: 6px;
       flex-shrink: 0;
-      opacity: 0.7;
     }
-
-    /* Skills */
-    .skill-group { display: flex; flex-direction: column; gap: 8px; }
-    .skill-name {
-      font-size: 12px;
-      color: rgba(255,255,255,0.9);
-      margin-bottom: 3px;
-    }
-    .skill-bar {
-      height: 4px;
-      background: rgba(255,255,255,0.12);
-      border-radius: 99px;
-      overflow: hidden;
-    }
-    .skill-fill {
-      height: 100%;
-      background: var(--gold);
-      border-radius: 99px;
-      transition: width 0.6s ease;
-    }
-
-    /* Tags */
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag {
-      font-size: 11px;
-      padding: 3px 10px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.75);
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-
-    /* Cert items */
-    .cert-item {
-      font-size: 12px;
-      color: rgba(255,255,255,0.82);
-      padding-left: 12px;
-      position: relative;
-      line-height: 1.5;
-    }
-    .cert-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 7px;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--gold);
-    }
-
-    /* ── Main ── */
-    .main {
-      padding: 40px 36px;
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-
-    /* Summary */
-    .summary {
-      background: var(--cream);
-      border-left: 4px solid var(--gold);
-      border-radius: 0 8px 8px 0;
-      padding: 16px 20px;
-      font-size: 13.5px;
-      color: #374151;
-      line-height: 1.75;
+    .about-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--tan-l);
+      line-height: 1.65;
       text-align: justify;
     }
+    .about-text em { font-style: italic; color: var(--white); }
 
-    /* Main section */
-    .m-section { display: flex; flex-direction: column; gap: 14px; }
-    .m-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Noto Serif TC', serif;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--navy);
-      padding-bottom: 8px;
-      border-bottom: 2px solid var(--border);
-    }
-    .m-title-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
-    }
-
-    /* Experience card */
-    .exp-card {
+    /* ── SKILLS ── */
+    .skills-section {
+      padding: 80px 60px;
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 4px 12px;
-      padding: 14px 0;
-      border-bottom: 1px solid #F0EDE8;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px;
+      align-items: start;
     }
-    .exp-card:last-child { border-bottom: none; padding-bottom: 0; }
+    .skills-header { position: sticky; top: 120px; }
+    .section-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sienna);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 38px;
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--brown);
+    }
+    .section-title em { font-style: italic; color: var(--sienna); }
 
-    .exp-org {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--navy);
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
     }
-    .exp-date {
+    .skill-card {
+      background: var(--cream-d);
+      padding: 28px 24px;
+      transition: background 0.2s;
+    }
+    .skill-card:hover { background: var(--white); }
+    .skill-card-num {
+      font-family: 'Cormorant Garamond', serif;
       font-size: 11px;
-      color: var(--muted);
-      white-space: nowrap;
-      padding-top: 2px;
+      color: var(--tan);
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
     }
-    .exp-role {
-      grid-column: 1;
-      font-size: 12px;
-      color: var(--gold);
+    .skill-card-name {
+      font-size: 14px;
       font-weight: 500;
+      color: var(--brown);
+      margin-bottom: 6px;
     }
-    .exp-bullets {
-      grid-column: 1 / -1;
-      margin-top: 8px;
-      padding-left: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .exp-bullets li {
-      font-size: 12.5px;
-      color: #4B5563;
+    .skill-card-desc {
+      font-size: 12px;
+      color: var(--muted);
       line-height: 1.6;
     }
 
-    /* Education card */
-    .edu-card {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 4px;
-      padding: 12px 0;
-      border-bottom: 1px solid #F0EDE8;
+    /* ── TOOLS ── */
+    .tools-section {
+      background: var(--cream-d);
+      padding: 60px;
     }
-    .edu-card:last-child { border-bottom: none; }
-    .edu-school { font-size: 13px; font-weight: 600; color: var(--navy); }
-    .edu-degree { font-size: 12px; color: var(--muted); }
-    .edu-date { font-size: 11px; color: var(--muted); white-space: nowrap; }
-    .edu-note {
-      grid-column: 1 / -1;
-      margin-top: 4px;
+    .tools-inner {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 11.5px;
-      color: var(--gold);
-      font-weight: 500;
+      gap: 48px;
     }
-    .edu-note-icon {
-      width: 14px;
-      height: 14px;
-    }
-
-    /* Values */
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-    .value-card {
-      background: var(--cream);
-      border-radius: 8px;
-      padding: 12px 14px;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    .value-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      background: var(--navy);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .tools-label {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
       flex-shrink: 0;
     }
-    .value-icon svg { width: 14px; height: 14px; }
-    .value-label { font-size: 12.5px; font-weight: 600; color: var(--navy); }
-    .value-desc { font-size: 11px; color: var(--muted); margin-top: 2px; line-height: 1.5; }
+    .tools-divider {
+      width: 1px;
+      height: 40px;
+      background: var(--tan-l);
+      flex-shrink: 0;
+    }
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .tool-pill {
+      font-size: 12px;
+      padding: 6px 16px;
+      border: 1px solid var(--tan-l);
+      color: var(--brown-m);
+      border-radius: 2px;
+      background: transparent;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .tool-pill:hover { background: var(--white); border-color: var(--tan); }
 
-    /* Footer */
-    .resume-footer {
-      grid-column: 1 / -1;
-      background: var(--navy);
-      padding: 10px 36px;
+    /* ── CONTACT ── */
+    .contact-section {
+      padding: 80px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .contact-left {}
+    .contact-cta {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400;
+      color: var(--brown);
+      line-height: 1.2;
+      margin-top: 12px;
+    }
+    .contact-cta em { font-style: italic; color: var(--sienna); }
+    .contact-email {
+      display: inline-block;
+      margin-top: 24px;
+      font-size: 14px;
+      color: var(--sienna);
+      text-decoration: none;
+      border-bottom: 1px solid var(--tan-l);
+      padding-bottom: 3px;
+      transition: border-color 0.2s;
+    }
+    .contact-email:hover { border-color: var(--sienna); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--brown);
+      padding: 24px 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .resume-footer span {
-      font-size: 10.5px;
-      color: rgba(255,255,255,0.4);
-      letter-spacing: 0.05em;
+    footer span {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.08em;
+    }
+
+    /* ══════════ RESUME OVERLAY ══════════ */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: flex;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    .overlay.open { visibility: visible; opacity: 1; }
+
+    .overlay-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(30, 18, 10, 0.6);
+      backdrop-filter: blur(4px);
+    }
+    .overlay-panel {
+      position: relative;
+      z-index: 1;
+      margin: auto;
+      width: 90%;
+      max-width: 860px;
+      max-height: 90vh;
+      background: var(--white);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transform: translateY(32px);
+      transition: transform 0.4s ease;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.3);
+    }
+    .overlay.open .overlay-panel { transform: translateY(0); }
+
+    .overlay-header {
+      background: var(--brown);
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .overlay-header span {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--tan-l);
+    }
+    .overlay-close {
+      background: none;
+      border: none;
+      color: var(--tan-l);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .overlay-close:hover { color: var(--white); }
+    .overlay-close svg { width: 16px; height: 16px; }
+
+    .overlay-body {
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    /* Resume inside overlay */
+    .resume-wrap {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+    }
+
+    .r-sidebar {
+      background: var(--brown);
+      color: var(--white);
+      padding: 32px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .r-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      border: 2px solid var(--tan);
+      background: var(--brown-m);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .r-avatar svg { width: 44px; height: 44px; opacity: 0.45; }
+    .r-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: var(--white);
+      line-height: 1.2;
+      margin-top: 8px;
+    }
+    .r-role {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--tan);
+      margin-top: 4px;
+    }
+
+    .r-s-title {
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--tan);
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(196,149,106,0.3);
+      margin-bottom: 6px;
+    }
+    .r-contact-item {
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.4;
+    }
+    .r-contact-item svg { width: 12px; height: 12px; opacity: 0.6; flex-shrink: 0; margin-top: 2px; }
+
+    .r-skill-row { margin-bottom: 7px; }
+    .r-skill-name { font-size: 11px; color: rgba(255,255,255,0.85); margin-bottom: 3px; }
+    .r-skill-bar { height: 3px; background: rgba(255,255,255,0.1); border-radius: 99px; }
+    .r-skill-fill { height: 100%; background: var(--tan); border-radius: 99px; }
+
+    .r-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+    .r-tag {
+      font-size: 9.5px; padding: 2px 8px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.65);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .r-cert { font-size: 11px; color: rgba(255,255,255,0.75); padding-left: 10px; position: relative; line-height: 1.5; }
+    .r-cert::before { content: ''; position: absolute; left: 0; top: 6px; width: 4px; height: 4px; border-radius: 50%; background: var(--tan); }
+
+    .r-main { padding: 28px 28px; display: flex; flex-direction: column; gap: 20px; }
+
+    .r-summary {
+      background: #FAF7F2;
+      border-left: 3px solid var(--tan);
+      padding: 12px 16px;
+      font-size: 12px;
+      color: #4B3B30;
+      line-height: 1.75;
+      text-align: justify;
+    }
+
+    .r-section { display: flex; flex-direction: column; gap: 10px; }
+    .r-section-title {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 14px;
+      color: var(--brown);
+      padding-bottom: 6px;
+      border-bottom: 1.5px solid var(--cream-d);
+    }
+    .r-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--tan); flex-shrink: 0; }
+
+    .r-exp { padding: 10px 0; border-bottom: 1px solid #F0EAE0; }
+    .r-exp:last-child { border-bottom: none; padding-bottom: 0; }
+    .r-exp-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .r-exp-org { font-size: 12px; font-weight: 500; color: var(--brown); }
+    .r-exp-date { font-size: 10px; color: var(--muted); }
+    .r-exp-role { font-size: 11px; color: var(--sienna); margin-top: 2px; }
+    .r-exp-bullets { margin-top: 6px; padding-left: 12px; display: flex; flex-direction: column; gap: 3px; }
+    .r-exp-bullets li { font-size: 11.5px; color: #5C4A3A; line-height: 1.55; }
+
+    .r-edu-top { display: flex; justify-content: space-between; }
+    .r-edu-school { font-size: 12px; font-weight: 500; color: var(--brown); }
+    .r-edu-date { font-size: 10px; color: var(--muted); }
+    .r-edu-degree { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .r-edu-honor {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 10.5px; color: var(--sienna); margin-top: 5px;
+    }
+    .r-edu-honor svg { width: 11px; height: 11px; }
+
+    .r-values { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .r-value {
+      background: #FAF7F2;
+      border-radius: 4px;
+      padding: 10px 12px;
+    }
+    .r-value-label { font-size: 11.5px; font-weight: 500; color: var(--brown); }
+    .r-value-desc { font-size: 10px; color: var(--muted); margin-top: 2px; line-height: 1.5; }
+
+    .r-footer {
+      grid-column: 1 / -1;
+      background: var(--brown);
+      padding: 8px 28px;
+      display: flex; justify-content: space-between;
+    }
+    .r-footer span { font-size: 9.5px; color: rgba(255,255,255,0.3); letter-spacing: 0.06em; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
+      .hero::after { display: none; }
+      .hero-visual { display: none; }
+      .about-strip { padding: 40px 24px; flex-direction: column; gap: 16px; }
+      .skills-section { grid-template-columns: 1fr; padding: 60px 24px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .tools-section { padding: 40px 24px; }
+      .tools-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .tools-divider { display: none; }
+      .contact-section { padding: 60px 24px; flex-direction: column; gap: 32px; }
+      footer { padding: 20px 24px; flex-direction: column; gap: 8px; }
+      .resume-wrap { grid-template-columns: 1fr; }
+      .r-sidebar { display: none; }
     }
   </style>
 </head>
 <body>
-<div class="page">
 
-  <!-- ══════════ SIDEBAR ══════════ -->
-  <aside class="sidebar">
+<!-- ══════════ NAV ══════════ -->
+<nav>
+  <a class="nav-logo" href="#">Belinda Lin</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Expertise</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-    <!-- Avatar + Name -->
-    <div class="avatar-wrap">
-      <div class="avatar">
-        <!-- Replace with: <img src="your-photo.jpg" alt="Belinda Lin" style="width:100%;height:100%;object-fit:cover;"> -->
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="32" cy="22" r="12" fill="rgba(255,255,255,0.4)"/>
-          <path d="M8 56c0-13.255 10.745-24 24-24s24 10.745 24 24" fill="rgba(255,255,255,0.4)"/>
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-tag">Marketing · Design · Management</div>
+    <h1 class="hero-name">Belinda<br><em>Lin</em></h1>
+    <p class="hero-desc">
+      Brand strategist and project manager with a passion for transforming ideas into measurable impact — through design, storytelling, and digital tools.
+    </p>
+    <div class="hero-actions">
+      <button class="btn-resume" onclick="openResume()">
+        <svg viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-1-1 1 1 0 001 1zm1-3a1 1 0 110 2H9a1 1 0 010-2h1zm3 0a1 1 0 110 2h-1a1 1 0 010-2h1z" clip-rule="evenodd"/>
         </svg>
+        View Resume
+      </button>
+      <a class="btn-contact" href="#contact">Get in touch</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="stat-row">
+      <div class="stat-item">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years at CSD</div>
       </div>
-      <div class="name-block">
-        <h1>Belinda Lin</h1>
-        <div class="title-pill">Marketing · Design · Management</div>
+      <div class="stat-item">
+        <div class="stat-num">M.S.</div>
+        <div class="stat-label">Marketing · NCUE</div>
       </div>
     </div>
-
-    <!-- Contact -->
-    <div class="s-section">
-      <div class="s-title">Contact</div>
-      <div class="contact-item">
-        <svg class="icon" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-        </svg>
-        lintsai186@gmail.com
-      </div>
-      <div class="contact-item">
-        <svg class="icon" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-        </svg>
-        Taiwan · Taichung / Taipei
+    <div class="expertise-block">
+      <div class="expertise-title">Areas of Focus</div>
+      <div class="expertise-list">
+        <div class="expertise-item">Brand Strategy <span>Core</span></div>
+        <div class="expertise-item">Integrated Marketing <span>Core</span></div>
+        <div class="expertise-item">Graphic Design <span>Core</span></div>
+        <div class="expertise-item">Project Management <span>Core</span></div>
+        <div class="expertise-item">AI-Powered Workflows <span>New</span></div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Core Skills -->
-    <div class="s-section">
-      <div class="s-title">Core Skills</div>
-      <div class="skill-group">
-        <div>
-          <div class="skill-name">Brand Strategy</div>
-          <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
-        </div>
-        <div>
-          <div class="skill-name">Project Management</div>
-          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
-        </div>
-        <div>
-          <div class="skill-name">Graphic Design</div>
-          <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
-        </div>
-        <div>
-          <div class="skill-name">Marketing & Content</div>
-          <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
-        </div>
-        <div>
-          <div class="skill-name">Digital Tool Integration</div>
-          <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
-        </div>
-      </div>
+<!-- ══════════ ABOUT ══════════ -->
+<section class="about-strip" id="about">
+  <div class="about-label">About</div>
+  <p class="about-text">
+    I bring together <em>academic rigor</em> and real-world marketing experience to help organizations navigate digital transformation. From crafting brand narratives to managing cross-functional projects, I believe that <em>good design and clear strategy</em> are inseparable.
+  </p>
+</section>
+
+<!-- ══════════ SKILLS ══════════ -->
+<section class="skills-section" id="skills">
+  <div class="skills-header">
+    <div class="section-eyebrow">Expertise</div>
+    <h2 class="section-title">What I<br><em>bring</em><br>to the table</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-num">01</div>
+      <div class="skill-card-name">Brand Strategy</div>
+      <div class="skill-card-desc">Building cohesive brand identities that resonate — from positioning to visual language.</div>
     </div>
-
-    <!-- Tools -->
-    <div class="s-section">
-      <div class="s-title">Tools & Software</div>
-      <div class="tags">
-        <span class="tag">Adobe Illustrator</span>
-        <span class="tag">Photoshop</span>
-        <span class="tag">Notion</span>
-        <span class="tag">Vocol.ai</span>
-        <span class="tag">Canva</span>
-        <span class="tag">Microsoft 365</span>
-        <span class="tag">Claude</span>
-      </div>
+    <div class="skill-card">
+      <div class="skill-card-num">02</div>
+      <div class="skill-card-name">Project Management</div>
+      <div class="skill-card-desc">Keeping complex, multi-stakeholder projects on track with clear structure and accountability.</div>
     </div>
-
-    <!-- Certifications -->
-    <div class="s-section">
-      <div class="s-title">Certifications</div>
-      <div class="cert-item">Advertising Engineering — Class A Technician</div>
-      <div class="cert-item">Advertising Design — Class C Technician</div>
+    <div class="skill-card">
+      <div class="skill-card-num">03</div>
+      <div class="skill-card-name">Graphic Design</div>
+      <div class="skill-card-desc">Translating strategy into compelling visuals across print, digital, and social media.</div>
     </div>
-
-  </aside>
-
-  <!-- ══════════ MAIN ══════════ -->
-  <main class="main">
-
-    <!-- Profile Summary -->
-    <div class="summary">
-      Marketing professional with a strong academic foundation and extensive industry experience, specializing in brand strategy, integrated marketing planning, and project management. Adept at driving communication through design thinking — balancing creative expression with business impact to help organizations build clear brand positioning and sustainable marketing ecosystems in the age of digital transformation.
+    <div class="skill-card">
+      <div class="skill-card-num">04</div>
+      <div class="skill-card-name">AI-Powered Work</div>
+      <div class="skill-card-desc">Leveraging AI tools across diverse contexts to increase output quality and efficiency.</div>
     </div>
+  </div>
+</section>
 
-    <!-- Work Experience -->
-    <div class="m-section">
-      <div class="m-title">
-        <div class="m-title-dot"></div>
-        Work Experience
-      </div>
-
-      <div class="exp-card">
-        <div class="exp-org">Corporate Synergy Development Center (CSD)</div>
-        <div class="exp-date">2025 — Present</div>
-        <div class="exp-role">Marketing Planner / Project Manager</div>
-        <ul class="exp-bullets">
-          <li>Led brand strategy planning and annual marketing execution, overseeing cross-media campaigns and event promotions.</li>
-          <li>Directed local revitalization and sustainable tourism projects, coordinating between government agencies, enterprises, and community partners.</li>
-          <li>Integrated visual design and copywriting to produce diverse materials including websites, social media content, and publications.</li>
-          <li>Leveraged AI tools across diverse work contexts to streamline workflows and enhance personal productivity.</li>
-        </ul>
-      </div>
-
-      <!-- Add previous roles here if needed -->
-
+<!-- ══════════ TOOLS ══════════ -->
+<div class="tools-section">
+  <div class="tools-inner">
+    <div class="tools-label">Tools & Software</div>
+    <div class="tools-divider"></div>
+    <div class="tools-list">
+      <span class="tool-pill">Adobe Illustrator</span>
+      <span class="tool-pill">Photoshop</span>
+      <span class="tool-pill">Notion</span>
+      <span class="tool-pill">Vocol.ai</span>
+      <span class="tool-pill">Canva</span>
+      <span class="tool-pill">Microsoft 365</span>
+      <span class="tool-pill">Claude</span>
     </div>
-
-    <!-- Education -->
-    <div class="m-section">
-      <div class="m-title">
-        <div class="m-title-dot"></div>
-        Education
-      </div>
-
-      <div class="edu-card">
-        <div class="edu-school">National Changhua University of Education (NCUE)</div>
-        <div class="edu-date">Master's Degree</div>
-        <div class="edu-degree">Graduate Institute of Marketing and Circulation Management</div>
-        <div class="edu-note">
-          <svg class="edu-note-icon" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-          </svg>
-          Phi Tau Phi Honor Society Member
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Core Strengths -->
-    <div class="m-section">
-      <div class="m-title">
-        <div class="m-title-dot"></div>
-        Core Strengths
-      </div>
-      <div class="values-grid">
-        <div class="value-card">
-          <div class="value-icon">
-            <svg viewBox="0 0 20 20" fill="#C9A84C">
-              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-              <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
-            </svg>
-          </div>
-          <div>
-            <div class="value-label">Detail-Oriented</div>
-            <div class="value-desc">High standards for visual and content quality — every output is precise and purposeful</div>
-          </div>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">
-            <svg viewBox="0 0 20 20" fill="#C9A84C">
-              <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
-            </svg>
-          </div>
-          <div>
-            <div class="value-label">Impact-Driven</div>
-            <div class="value-desc">Results-oriented mindset that balances creativity with the best use of resources</div>
-          </div>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">
-            <svg viewBox="0 0 20 20" fill="#C9A84C">
-              <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
-            </svg>
-          </div>
-          <div>
-            <div class="value-label">Adaptable</div>
-            <div class="value-desc">Responds quickly to change by integrating resources and adjusting strategies on the fly</div>
-          </div>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">
-            <svg viewBox="0 0 20 20" fill="#C9A84C">
-              <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-            </svg>
-          </div>
-          <div>
-            <div class="value-label">Grounded & Steady</div>
-            <div class="value-desc">Systematic thinker who ensures long-term goals are consistently executed and delivered</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="resume-footer">
-    <span>Belinda Lin</span>
-    <span>lintsai186@gmail.com</span>
-    <span>Updated May 2026</span>
-  </footer>
-
+  </div>
 </div>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section class="contact-section" id="contact">
+  <div class="contact-left">
+    <div class="section-eyebrow">Contact</div>
+    <h2 class="contact-cta">Let's work<br><em>together.</em></h2>
+    <a class="contact-email" href="mailto:lintsai186@gmail.com">lintsai186@gmail.com</a>
+  </div>
+  <button class="btn-resume" onclick="openResume()" style="align-self:flex-end">
+    <svg viewBox="0 0 20 20" fill="currentColor" style="width:14px;height:14px">
+      <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-1-1 1 1 0 001 1zm1-3a1 1 0 110 2H9a1 1 0 010-2h1zm3 0a1 1 0 110 2h-1a1 1 0 010-2h1z" clip-rule="evenodd"/>
+    </svg>
+    View Resume
+  </button>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <span>Belinda Lin · lintsai186@gmail.com</span>
+  <span>Updated May 2026</span>
+</footer>
+
+<!-- ══════════ RESUME OVERLAY ══════════ -->
+<div class="overlay" id="resumeOverlay">
+  <div class="overlay-backdrop" onclick="closeResume()"></div>
+  <div class="overlay-panel">
+    <div class="overlay-header">
+      <span>Belinda Lin — Resume</span>
+      <button class="overlay-close" onclick="closeResume()">
+        <svg viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+        </svg>
+        Close
+      </button>
+    </div>
+    <div class="overlay-body">
+      <div class="resume-wrap">
+
+        <!-- Sidebar -->
+        <aside class="r-sidebar">
+          <div>
+            <div class="r-avatar">
+              <svg viewBox="0 0 64 64" fill="none">
+                <circle cx="32" cy="22" r="12" fill="rgba(255,255,255,0.4)"/>
+                <path d="M8 56c0-13.255 10.745-24 24-24s24 10.745 24 24" fill="rgba(255,255,255,0.4)"/>
+              </svg>
+            </div>
+            <div class="r-name">Belinda Lin</div>
+            <div class="r-role">Marketing · Design · Management</div>
+          </div>
+
+          <div>
+            <div class="r-s-title">Contact</div>
+            <div class="r-contact-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+              lintsai186@gmail.com
+            </div>
+            <div class="r-contact-item" style="margin-top:8px">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+              Taiwan · Taichung / Taipei
+            </div>
+          </div>
+
+          <div>
+            <div class="r-s-title">Core Skills</div>
+            <div class="r-skill-row"><div class="r-skill-name">Brand Strategy</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:92%"></div></div></div>
+            <div class="r-skill-row"><div class="r-skill-name">Project Management</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:90%"></div></div></div>
+            <div class="r-skill-row"><div class="r-skill-name">Graphic Design</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:88%"></div></div></div>
+            <div class="r-skill-row"><div class="r-skill-name">Marketing & Content</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:85%"></div></div></div>
+            <div class="r-skill-row"><div class="r-skill-name">Digital Tool Integration</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:80%"></div></div></div>
+          </div>
+
+          <div>
+            <div class="r-s-title">Tools & Software</div>
+            <div class="r-tags">
+              <span class="r-tag">Adobe Illustrator</span>
+              <span class="r-tag">Photoshop</span>
+              <span class="r-tag">Notion</span>
+              <span class="r-tag">Vocol.ai</span>
+              <span class="r-tag">Canva</span>
+              <span class="r-tag">Microsoft 365</span>
+              <span class="r-tag">Claude</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="r-s-title">Certifications</div>
+            <div class="r-cert">Advertising Engineering — Class A</div>
+            <div class="r-cert" style="margin-top:6px">Advertising Design — Class C</div>
+          </div>
+        </aside>
+
+        <!-- Main -->
+        <main class="r-main">
+          <div class="r-summary">
+            Marketing professional with a strong academic foundation and extensive industry experience, specializing in brand strategy, integrated marketing planning, and project management. Adept at driving communication through design thinking — balancing creative expression with business impact to help organizations build clear brand positioning and sustainable marketing ecosystems in the age of digital transformation.
+          </div>
+
+          <div class="r-section">
+            <div class="r-section-title"><div class="r-dot"></div>Work Experience</div>
+            <div class="r-exp">
+              <div class="r-exp-top">
+                <div class="r-exp-org">Corporate Synergy Development Center (CSD)</div>
+                <div class="r-exp-date">2025 — Present</div>
+              </div>
+              <div class="r-exp-role">Marketing Planner / Project Manager</div>
+              <ul class="r-exp-bullets">
+                <li>Led brand strategy planning and annual marketing execution, overseeing cross-media campaigns and event promotions.</li>
+                <li>Directed local revitalization and sustainable tourism projects, coordinating between government agencies, enterprises, and community partners.</li>
+                <li>Integrated visual design and copywriting to produce diverse materials including websites, social media content, and publications.</li>
+                <li>Leveraged AI tools across diverse work contexts to streamline workflows and enhance personal productivity.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="r-section">
+            <div class="r-section-title"><div class="r-dot"></div>Education</div>
+            <div>
+              <div class="r-edu-top">
+                <div class="r-edu-school">National Changhua University of Education (NCUE)</div>
+                <div class="r-edu-date">Master's Degree</div>
+              </div>
+              <div class="r-edu-degree">Graduate Institute of Marketing and Circulation Management</div>
+              <div class="r-edu-honor">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                Phi Tau Phi Honor Society Member
+              </div>
+            </div>
+          </div>
+
+          <div class="r-section">
+            <div class="r-section-title"><div class="r-dot"></div>Core Strengths</div>
+            <div class="r-values">
+              <div class="r-value">
+                <div class="r-value-label">Detail-Oriented</div>
+                <div class="r-value-desc">High standards for visual and content quality — every output is precise and purposeful</div>
+              </div>
+              <div class="r-value">
+                <div class="r-value-label">Impact-Driven</div>
+                <div class="r-value-desc">Results-oriented mindset balancing creativity with the best use of resources</div>
+              </div>
+              <div class="r-value">
+                <div class="r-value-label">Adaptable</div>
+                <div class="r-value-desc">Responds quickly to change by integrating resources and adjusting strategies</div>
+              </div>
+              <div class="r-value">
+                <div class="r-value-label">Grounded & Steady</div>
+                <div class="r-value-desc">Systematic thinker who ensures long-term goals are consistently delivered</div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <div class="r-footer">
+          <span>Belinda Lin</span>
+          <span>lintsai186@gmail.com</span>
+          <span>Updated May 2026</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openResume() {
+    document.getElementById('resumeOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeResume() {
+    document.getElementById('resumeOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeResume(); });
+</script>
+
 </body>
 </html>
