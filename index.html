@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>林韋慈 Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1B2A4A;
+      --navy-l: #243556;
+      --gold:   #C9A84C;
+      --gold-l: #E8C96A;
+      --cream:  #F7F4EF;
+      --muted:  #6B7280;
+      --border: #DDD8CE;
+      --white:  #FFFFFF;
+      --text:   #1A1A2E;
+    }
+
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .page { box-shadow: none; margin: 0; border-radius: 0; max-width: 100%; }
+    }
+
+    body {
+      background: #EDEAE3;
+      font-family: 'Noto Sans TC', 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 16px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 860px;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.14);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      background: var(--navy);
+      color: var(--white);
+      padding: 40px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .avatar-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      background: var(--navy-l);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar svg {
+      width: 64px;
+      height: 64px;
+      opacity: 0.5;
+    }
+
+    .name-block { text-align: center; }
+    .name-block h1 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .name-block .en-name {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--gold-l);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .name-block .title-pill {
+      display: inline-block;
+      margin-top: 10px;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.06em;
+    }
+
+    /* Sidebar section */
+    .s-section { display: flex; flex-direction: column; gap: 10px; }
+    .s-title {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(201,168,76,0.3);
+    }
+
+    /* Contact items */
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.4;
+    }
+    .contact-item .icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    /* Skills */
+    .skill-group { display: flex; flex-direction: column; gap: 8px; }
+    .skill-name {
+      font-size: 12px;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 3px;
+    }
+    .skill-bar {
+      height: 4px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .skill-fill {
+      height: 100%;
+      background: var(--gold);
+      border-radius: 99px;
+      transition: width 0.6s ease;
+    }
+
+    /* Tags */
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    /* Cert items */
+    .cert-item {
+      font-size: 12px;
+      color: rgba(255,255,255,0.82);
+      padding-left: 12px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .cert-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    /* ── Main ── */
+    .main {
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* Summary */
+    .summary {
+      background: var(--cream);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      font-size: 13.5px;
+      color: #374151;
+      line-height: 1.75;
+    }
+
+    /* Main section */
+    .m-section { display: flex; flex-direction: column; gap: 14px; }
+    .m-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+    }
+    .m-title-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* Experience card */
+    .exp-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4px 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid #F0EDE8;
+    }
+    .exp-card:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .exp-org {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .exp-date {
+      font-size: 11px;
+      color: var(--muted);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+    .exp-role {
+      grid-column: 1;
+      font-size: 12px;
+      color: var(--gold);
+      font-weight: 500;
+    }
+    .exp-bullets {
+      grid-column: 1 / -1;
+      margin-top: 8px;
+      padding-left: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .exp-bullets li {
+      font-size: 12.5px;
+      color: #4B5563;
+      line-height: 1.6;
+    }
+
+    /* Education card */
+    .edu-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4px;
+      padding: 12px 0;
+      border-bottom: 1px solid #F0EDE8;
+    }
+    .edu-card:last-child { border-bottom: none; }
+    .edu-school { font-size: 13px; font-weight: 600; color: var(--navy); }
+    .edu-degree { font-size: 12px; color: var(--muted); }
+    .edu-date { font-size: 11px; color: var(--muted); white-space: nowrap; }
+    .edu-note {
+      grid-column: 1 / -1;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: var(--gold);
+      font-weight: 500;
+    }
+    .edu-note-icon {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Values */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .value-card {
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .value-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .value-icon svg { width: 14px; height: 14px; }
+    .value-label { font-size: 12.5px; font-weight: 600; color: var(--navy); }
+    .value-desc { font-size: 11px; color: var(--muted); margin-top: 2px; line-height: 1.5; }
+
+    /* Footer */
+    .resume-footer {
+      grid-column: 1 / -1;
+      background: var(--navy);
+      padding: 10px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .resume-footer span {
+      font-size: 10.5px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══════════ SIDEBAR ══════════ -->
+  <aside class="sidebar">
+
+    <!-- Avatar + Name -->
+    <div class="avatar-wrap">
+      <div class="avatar">
+        <!-- 個人照片佔位符，可替換為 <img src="your-photo.jpg" alt="林韋慈" style="width:100%;height:100%;object-fit:cover;"> -->
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="22" r="12" fill="rgba(255,255,255,0.4)"/>
+          <path d="M8 56c0-13.255 10.745-24 24-24s24 10.745 24 24" fill="rgba(255,255,255,0.4)"/>
+        </svg>
+      </div>
+      <div class="name-block">
+        <h1>林韋慈</h1>
+        <div class="en-name">Lin Wei-Ci</div>
+        <div class="title-pill">行銷 · 設計 · 管理</div>
+      </div>
+    </div>
+
+    <!-- 聯絡方式 -->
+    <div class="s-section">
+      <div class="s-title">聯絡方式</div>
+      <div class="contact-item">
+        <svg class="icon" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+        </svg>
+        lintsai186@gmail.com
+      </div>
+      <div class="contact-item">
+        <svg class="icon" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+        </svg>
+        台灣・彰化 / 台北
+      </div>
+    </div>
+
+    <!-- 專業技能 -->
+    <div class="s-section">
+      <div class="s-title">核心技能</div>
+      <div class="skill-group">
+        <div>
+          <div class="skill-name">品牌策略規劃</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+        </div>
+        <div>
+          <div class="skill-name">專案管理執行</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+        </div>
+        <div>
+          <div class="skill-name">平面視覺設計</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+        </div>
+        <div>
+          <div class="skill-name">行銷內容企劃</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+        </div>
+        <div>
+          <div class="skill-name">數位工具整合</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 工具 -->
+    <div class="s-section">
+      <div class="s-title">工具與軟體</div>
+      <div class="tags">
+        <span class="tag">Adobe Illustrator</span>
+        <span class="tag">Photoshop</span>
+        <span class="tag">Premiere Pro</span>
+        <span class="tag">Notion</span>
+        <span class="tag">Asana</span>
+        <span class="tag">Vocol.ai</span>
+        <span class="tag">Canva</span>
+        <span class="tag">Microsoft 365</span>
+      </div>
+    </div>
+
+    <!-- 證照 -->
+    <div class="s-section">
+      <div class="s-title">證照</div>
+      <div class="cert-item">廣告工程甲級技術士</div>
+      <div class="cert-item">廣告設計丙級技術士</div>
+    </div>
+
+  </aside>
+
+  <!-- ══════════ MAIN ══════════ -->
+  <main class="main">
+
+    <!-- 個人簡介 -->
+    <div class="summary">
+      具備行銷學術底蘊與多年業界實戰經驗，專注品牌策略、跨媒體行銷規劃與專案整合管理。擅長以設計思維驅動溝通，兼顧創意表現與商業效益，協助組織在數位轉型浪潮中建立清晰的品牌定位與可持續的行銷生態。
+    </div>
+
+    <!-- 工作經歷 -->
+    <div class="m-section">
+      <div class="m-title">
+        <div class="m-title-dot"></div>
+        工作經歷
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-org">財團法人中衛發展中心（CSD）</div>
+        <div class="exp-date">20XX 年 — 至今</div>
+        <div class="exp-role">行銷企劃 / 專案管理師</div>
+        <ul class="exp-bullets">
+          <li>負責品牌策略規劃與年度行銷執行，統籌跨媒體宣傳與活動推廣。</li>
+          <li>主導地方創生、永續旅遊相關計畫，協調政府單位、企業與在地夥伴。</li>
+          <li>整合視覺設計與文案內容，產出官網、社群、刊物等多元素材。</li>
+          <li>導入數位協作工具（Notion、Asana），優化跨部門專案追蹤流程。</li>
+        </ul>
+      </div>
+
+      <!-- 可補充前一份工作 -->
+      <!--
+      <div class="exp-card">
+        <div class="exp-org">前一份公司名稱</div>
+        <div class="exp-date">20XX — 20XX</div>
+        <div class="exp-role">職稱</div>
+        <ul class="exp-bullets">
+          <li>主要職責說明。</li>
+        </ul>
+      </div>
+      -->
+
+    </div>
+
+    <!-- 教育背景 -->
+    <div class="m-section">
+      <div class="m-title">
+        <div class="m-title-dot"></div>
+        教育背景
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-school">國立彰化師範大學（NCUE）</div>
+        <div class="edu-date">碩士畢業</div>
+        <div class="edu-degree">行銷與流通管理研究所</div>
+        <div class="edu-note">
+          <svg class="edu-note-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+          斐陶斐榮譽學術會員（Phi Tau Phi）
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 核心價值 -->
+    <div class="m-section">
+      <div class="m-title">
+        <div class="m-title-dot"></div>
+        核心特質
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 20 20" fill="#C9A84C">
+              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+              <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div>
+            <div class="value-label">細節敏銳</div>
+            <div class="value-desc">對視覺與資訊品質有高度要求，確保輸出精準到位</div>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 20 20" fill="#C9A84C">
+              <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div>
+            <div class="value-label">追求效益</div>
+            <div class="value-desc">以結果為導向，兼顧創意與資源投入的最佳比值</div>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 20 20" fill="#C9A84C">
+              <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div>
+            <div class="value-label">應變靈活</div>
+            <div class="value-desc">快速因應環境變化，整合多方資源調整執行策略</div>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 20 20" fill="#C9A84C">
+              <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div>
+            <div class="value-label">踏實穩健</div>
+            <div class="value-desc">重視執行落地，以系統化思維確保長期目標推進</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="resume-footer">
+    <span>林韋慈 · Lin Wei-Ci</span>
+    <span>lintsai186@gmail.com</span>
+    <span>更新於 2026 年 5 月</span>
+  </footer>
+
+</div>
+</body>
+</html>
