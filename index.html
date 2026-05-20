@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,15 +11,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream:    #F5F0E8;
-      --cream-d:  #EDE6D8;
-      --brown:    #3D2B1F;
-      --brown-m:  #6B4226;
-      --sienna:   #A0522D;
-      --tan:      #C4956A;
-      --tan-l:    #DDB896;
-      --muted:    #8C7B6E;
-      --white:    #FEFCF8;
+      --cream:   #F5F0E8;
+      --cream-d: #EDE6D8;
+      --brown:   #3D2B1F;
+      --brown-m: #6B4226;
+      --sienna:  #A0522D;
+      --tan:     #C4956A;
+      --tan-l:   #DDB896;
+      --muted:   #8C7B6E;
+      --white:   #FEFCF8;
     }
 
     html { scroll-behavior: smooth; }
@@ -55,8 +55,7 @@
     .nav-links { display: flex; gap: 32px; }
     .nav-links a {
       font-size: 12px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      letter-spacing: 0.1em;
       color: var(--brown-m);
       text-decoration: none;
       transition: color 0.2s;
@@ -81,13 +80,11 @@
       background: var(--cream-d);
       z-index: 0;
     }
-
     .hero-text { position: relative; z-index: 1; }
     .hero-tag {
       display: inline-block;
       font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      letter-spacing: 0.18em;
       color: var(--sienna);
       border-bottom: 1px solid var(--tan-l);
       padding-bottom: 6px;
@@ -101,10 +98,7 @@
       color: var(--brown);
       letter-spacing: -0.01em;
     }
-    .hero-name em {
-      font-style: italic;
-      color: var(--sienna);
-    }
+    .hero-name em { font-style: italic; color: var(--sienna); }
     .hero-desc {
       margin-top: 28px;
       font-size: 15px;
@@ -118,37 +112,34 @@
       align-items: center;
       gap: 24px;
     }
-    .btn-resume {
+    .btn-primary {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       background: var(--brown);
       color: var(--cream);
       font-size: 12px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      letter-spacing: 0.1em;
       padding: 14px 32px;
       border: none;
       cursor: pointer;
       border-radius: 2px;
       transition: background 0.25s, transform 0.2s;
+      text-decoration: none;
     }
-    .btn-resume:hover { background: var(--brown-m); transform: translateY(-1px); }
-    .btn-resume svg { width: 14px; height: 14px; }
-
-    .btn-contact {
+    .btn-primary:hover { background: var(--brown-m); transform: translateY(-1px); }
+    .btn-primary svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .btn-ghost {
       font-size: 12px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      letter-spacing: 0.1em;
       color: var(--muted);
       text-decoration: none;
       border-bottom: 1px solid var(--tan-l);
       padding-bottom: 2px;
       transition: color 0.2s;
     }
-    .btn-contact:hover { color: var(--sienna); }
+    .btn-ghost:hover { color: var(--sienna); }
 
-    /* Hero visual */
     .hero-visual {
       position: relative;
       z-index: 1;
@@ -157,11 +148,7 @@
       gap: 16px;
       align-items: flex-start;
     }
-    .stat-row {
-      display: flex;
-      gap: 40px;
-      margin-bottom: 8px;
-    }
+    .stat-row { display: flex; gap: 40px; margin-bottom: 8px; }
     .stat-item { display: flex; flex-direction: column; gap: 4px; }
     .stat-num {
       font-family: 'DM Serif Display', serif;
@@ -171,8 +158,7 @@
     }
     .stat-label {
       font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      letter-spacing: 0.1em;
       color: var(--muted);
     }
     .expertise-block {
@@ -184,16 +170,11 @@
     }
     .expertise-title {
       font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      letter-spacing: 0.18em;
       color: var(--tan);
       margin-bottom: 16px;
     }
-    .expertise-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .expertise-list { display: flex; flex-direction: column; gap: 10px; }
     .expertise-item {
       display: flex;
       align-items: center;
@@ -206,12 +187,11 @@
     .expertise-item:last-child { border-bottom: none; padding-bottom: 0; }
     .expertise-item span {
       font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      letter-spacing: 0.08em;
       color: var(--tan);
     }
 
-    /* ── ABOUT STRIP ── */
+    /* ── ABOUT ── */
     .about-strip {
       background: var(--brown);
       padding: 60px;
@@ -221,8 +201,7 @@
     }
     .about-label {
       font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      letter-spacing: 0.2em;
       color: var(--tan);
       white-space: nowrap;
       padding-top: 6px;
@@ -249,8 +228,7 @@
     .skills-header { position: sticky; top: 120px; }
     .section-eyebrow {
       font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      letter-spacing: 0.2em;
       color: var(--sienna);
       margin-bottom: 12px;
     }
@@ -293,9 +271,187 @@
       line-height: 1.6;
     }
 
+    /* ── PORTFOLIO ── */
+    .portfolio-section {
+      padding: 80px 60px;
+      background: var(--cream-d);
+    }
+    .portfolio-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .portfolio-tabs {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    .p-tab {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      background: transparent;
+      border: 1px solid var(--tan-l);
+      padding: 8px 20px;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .p-tab:hover { background: var(--white); color: var(--brown); }
+    .p-tab.active {
+      background: var(--brown);
+      color: var(--cream);
+      border-color: var(--brown);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2px;
+      margin-top: 24px;
+    }
+    .p-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 4/3;
+      background: var(--cream);
+    }
+    .p-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+    .p-item:hover img { transform: scale(1.05); }
+    .p-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(61,43,31,0);
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+      transition: background 0.3s;
+    }
+    .p-item:hover .p-item-overlay { background: rgba(61,43,31,0.45); }
+    .p-item-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.9);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .p-item:hover .p-item-label { opacity: 1; transform: translateY(0); }
+
+    /* KOL placeholder */
+    .kol-empty {
+      display: none;
+      margin-top: 24px;
+      padding: 72px 40px;
+      text-align: center;
+      border: 1px dashed var(--tan-l);
+    }
+    .kol-empty.show { display: block; }
+    .kol-empty-sym {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      color: var(--tan-l);
+      margin-bottom: 14px;
+    }
+    .kol-empty-txt {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 400;
+      display: flex;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .lightbox.open { visibility: visible; opacity: 1; }
+    .lb-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(18,10,4,0.88);
+      backdrop-filter: blur(10px);
+    }
+    .lb-content {
+      position: relative;
+      z-index: 1;
+      margin: auto;
+      max-width: 90vw;
+      max-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lb-img {
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+    }
+    .lightbox.open .lb-img { transform: scale(1); }
+    .lb-close {
+      position: fixed;
+      top: 24px; right: 32px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+      z-index: 2;
+    }
+    .lb-close:hover { color: white; }
+    .lb-close svg { width: 16px; height: 16px; }
+    .lb-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 2px;
+      transition: all 0.2s;
+      z-index: 2;
+    }
+    .lb-btn:hover { background: rgba(255,255,255,0.15); color: white; }
+    .lb-prev { left: 24px; }
+    .lb-next { right: 24px; }
+    .lb-counter {
+      position: fixed;
+      bottom: 24px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.3);
+      z-index: 2;
+    }
+
     /* ── TOOLS ── */
     .tools-section {
-      background: var(--cream-d);
+      background: var(--cream);
       padding: 28px 60px;
     }
     .tools-inner {
@@ -305,8 +461,7 @@
     }
     .tools-label {
       font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      letter-spacing: 0.2em;
       color: var(--muted);
       white-space: nowrap;
       flex-shrink: 0;
@@ -317,11 +472,7 @@
       background: var(--tan-l);
       flex-shrink: 0;
     }
-    .tools-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+    .tools-list { display: flex; flex-wrap: wrap; gap: 10px; }
     .tool-pill {
       font-size: 12px;
       padding: 6px 16px;
@@ -340,7 +491,6 @@
       justify-content: space-between;
       align-items: flex-end;
     }
-    .contact-left {}
     .contact-cta {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(32px, 4vw, 52px);
@@ -373,7 +523,7 @@
     footer span {
       font-size: 11px;
       color: rgba(255,255,255,0.3);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
     }
 
     /* ══════════ RESUME OVERLAY ══════════ */
@@ -387,11 +537,10 @@
       transition: opacity 0.4s ease, visibility 0.4s ease;
     }
     .overlay.open { visibility: visible; opacity: 1; }
-
     .overlay-backdrop {
       position: absolute;
       inset: 0;
-      background: rgba(30, 18, 10, 0.6);
+      background: rgba(30,18,10,0.6);
       backdrop-filter: blur(4px);
     }
     .overlay-panel {
@@ -411,7 +560,6 @@
       box-shadow: 0 32px 80px rgba(0,0,0,0.3);
     }
     .overlay.open .overlay-panel { transform: translateY(0); }
-
     .overlay-header {
       background: var(--brown);
       padding: 16px 28px;
@@ -422,8 +570,7 @@
     }
     .overlay-header span {
       font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      letter-spacing: 0.18em;
       color: var(--tan-l);
     }
     .overlay-close {
@@ -435,23 +582,15 @@
       align-items: center;
       gap: 8px;
       font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      letter-spacing: 0.08em;
       transition: color 0.2s;
     }
     .overlay-close:hover { color: var(--white); }
     .overlay-close svg { width: 16px; height: 16px; }
+    .overlay-body { overflow-y: auto; flex: 1; }
 
-    .overlay-body {
-      overflow-y: auto;
-      flex: 1;
-    }
-
-    /* Resume inside overlay */
-    .resume-wrap {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-    }
+    /* Resume layout */
+    .resume-wrap { display: grid; grid-template-columns: 220px 1fr; }
 
     .r-sidebar {
       background: var(--brown);
@@ -478,16 +617,13 @@
     }
     .r-role {
       font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
+      letter-spacing: 0.12em;
       color: var(--tan);
       margin-top: 4px;
     }
-
     .r-s-title {
       font-size: 9px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      letter-spacing: 0.2em;
       color: var(--tan);
       padding-bottom: 6px;
       border-bottom: 1px solid rgba(196,149,106,0.3);
@@ -500,12 +636,10 @@
       line-height: 1.4;
     }
     .r-contact-item svg { width: 12px; height: 12px; opacity: 0.6; flex-shrink: 0; margin-top: 2px; }
-
     .r-skill-row { margin-bottom: 7px; }
     .r-skill-name { font-size: 11px; color: rgba(255,255,255,0.85); margin-bottom: 3px; }
     .r-skill-bar { height: 3px; background: rgba(255,255,255,0.1); border-radius: 99px; }
     .r-skill-fill { height: 100%; background: var(--tan); border-radius: 99px; }
-
     .r-tags { display: flex; flex-wrap: wrap; gap: 4px; }
     .r-tag {
       font-size: 9.5px; padding: 2px 8px;
@@ -517,8 +651,7 @@
     .r-cert { font-size: 11px; color: rgba(255,255,255,0.75); padding-left: 10px; position: relative; line-height: 1.5; }
     .r-cert::before { content: ''; position: absolute; left: 0; top: 6px; width: 4px; height: 4px; border-radius: 50%; background: var(--tan); }
 
-    .r-main { padding: 28px 28px; display: flex; flex-direction: column; gap: 20px; }
-
+    .r-main { padding: 28px; display: flex; flex-direction: column; gap: 20px; }
     .r-summary {
       background: #FAF7F2;
       border-left: 3px solid var(--tan);
@@ -528,7 +661,6 @@
       line-height: 1.75;
       text-align: justify;
     }
-
     .r-section { display: flex; flex-direction: column; gap: 10px; }
     .r-section-title {
       display: flex; align-items: center; gap: 8px;
@@ -539,16 +671,14 @@
       border-bottom: 1.5px solid var(--cream-d);
     }
     .r-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--tan); flex-shrink: 0; }
-
     .r-exp { padding: 10px 0; border-bottom: 1px solid #F0EAE0; }
     .r-exp:last-child { border-bottom: none; padding-bottom: 0; }
     .r-exp-top { display: flex; justify-content: space-between; align-items: flex-start; }
     .r-exp-org { font-size: 12px; font-weight: 500; color: var(--brown); }
-    .r-exp-date { font-size: 10px; color: var(--muted); }
+    .r-exp-date { font-size: 10px; color: var(--muted); white-space: nowrap; }
     .r-exp-role { font-size: 11px; color: var(--sienna); margin-top: 2px; }
     .r-exp-bullets { margin-top: 6px; padding-left: 12px; display: flex; flex-direction: column; gap: 3px; }
     .r-exp-bullets li { font-size: 11.5px; color: #5C4A3A; line-height: 1.55; }
-
     .r-edu-top { display: flex; justify-content: space-between; }
     .r-edu-school { font-size: 12px; font-weight: 500; color: var(--brown); }
     .r-edu-date { font-size: 10px; color: var(--muted); }
@@ -558,16 +688,10 @@
       font-size: 10.5px; color: var(--sienna); margin-top: 5px;
     }
     .r-edu-honor svg { width: 11px; height: 11px; }
-
     .r-values { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .r-value {
-      background: #FAF7F2;
-      border-radius: 4px;
-      padding: 10px 12px;
-    }
+    .r-value { background: #FAF7F2; border-radius: 4px; padding: 10px 12px; }
     .r-value-label { font-size: 11.5px; font-weight: 500; color: var(--brown); }
     .r-value-desc { font-size: 10px; color: var(--muted); margin-top: 2px; line-height: 1.5; }
-
     .r-footer {
       grid-column: 1 / -1;
       background: var(--brown);
@@ -586,13 +710,17 @@
       .about-strip { padding: 40px 24px; flex-direction: column; gap: 16px; }
       .skills-section { grid-template-columns: 1fr; padding: 60px 24px; }
       .skills-grid { grid-template-columns: 1fr; }
-      .tools-section { padding: 40px 24px; }
-      .tools-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .portfolio-section { padding: 60px 24px; }
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .tools-section { padding: 24px; }
+      .tools-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
       .tools-divider { display: none; }
-      .contact-section { padding: 60px 24px; flex-direction: column; gap: 32px; }
+      .contact-section { padding: 60px 24px; flex-direction: column; gap: 32px; align-items: flex-start; }
       footer { padding: 20px 24px; flex-direction: column; gap: 8px; }
       .resume-wrap { grid-template-columns: 1fr; }
       .r-sidebar { display: none; }
+      .lb-prev { left: 12px; }
+      .lb-next { right: 12px; }
     }
   </style>
 </head>
@@ -602,50 +730,51 @@
 <nav>
   <a class="nav-logo" href="#">Belinda Lin</a>
   <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#skills">Expertise</a>
-    <a href="#contact">Contact</a>
+    <a href="#about">關於</a>
+    <a href="#skills">專業</a>
+    <a href="#works">作品集</a>
+    <a href="#contact">聯絡</a>
   </div>
 </nav>
 
 <!-- ══════════ HERO ══════════ -->
 <section class="hero">
   <div class="hero-text">
-    <div class="hero-tag">Marketing · Design · Management</div>
+    <div class="hero-tag">行銷 · 設計 · 管理</div>
     <h1 class="hero-name">Belinda<br><em>Lin</em></h1>
     <p class="hero-desc">
-      Brand strategist and project manager with a passion for transforming ideas into measurable impact — through design, storytelling, and digital tools.
+      具平面設計與行銷研究背景的品牌策略師與專案管理師，擅長將創意轉化為可衡量的市場成效——透過設計、敘事與數位工具的整合運用。
     </p>
     <div class="hero-actions">
-      <button class="btn-resume" onclick="openResume()">
+      <button class="btn-primary" onclick="openResume()">
         <svg viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-1-1 1 1 0 001 1zm1-3a1 1 0 110 2H9a1 1 0 010-2h1zm3 0a1 1 0 110 2h-1a1 1 0 010-2h1z" clip-rule="evenodd"/>
+          <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 5a1 1 0 00-1 1v3H8a1 1 0 000 2h2v1a1 1 0 002 0v-1h2a1 1 0 000-2h-2V8a1 1 0 00-1-1z" clip-rule="evenodd"/>
         </svg>
-        View Resume
+        查看履歷
       </button>
-      <a class="btn-contact" href="#contact">Get in touch</a>
+      <a class="btn-ghost" href="#contact">聯絡合作</a>
     </div>
   </div>
 
   <div class="hero-visual">
     <div class="stat-row">
       <div class="stat-item">
-        <div class="stat-num">3+</div>
-        <div class="stat-label">Years at CSD</div>
+        <div class="stat-num">11+</div>
+        <div class="stat-label">年實務經歷</div>
       </div>
       <div class="stat-item">
         <div class="stat-num">M.S.</div>
-        <div class="stat-label">Marketing · NCUE</div>
+        <div class="stat-label">行銷 · 國立彰師大</div>
       </div>
     </div>
     <div class="expertise-block">
-      <div class="expertise-title">Areas of Focus</div>
+      <div class="expertise-title">專業領域</div>
       <div class="expertise-list">
-        <div class="expertise-item">Brand Strategy <span>Core</span></div>
-        <div class="expertise-item">Integrated Marketing <span>Core</span></div>
-        <div class="expertise-item">Graphic Design <span>Core</span></div>
-        <div class="expertise-item">Project Management <span>Core</span></div>
-        <div class="expertise-item">AI-Powered Workflows <span>New</span></div>
+        <div class="expertise-item">品牌策略 <span>核心</span></div>
+        <div class="expertise-item">整合行銷 <span>核心</span></div>
+        <div class="expertise-item">視覺設計 <span>核心</span></div>
+        <div class="expertise-item">專案管理 <span>核心</span></div>
+        <div class="expertise-item">AI 輔助工作流 <span>進化中</span></div>
       </div>
     </div>
   </div>
@@ -653,54 +782,87 @@
 
 <!-- ══════════ ABOUT ══════════ -->
 <section class="about-strip" id="about">
-  <div class="about-label">About</div>
+  <div class="about-label">關於</div>
   <p class="about-text">
-    I bring together <em>academic rigor</em> and real-world marketing experience to help organizations navigate digital transformation. From crafting brand narratives to managing cross-functional projects, I believe that <em>good design and clear strategy</em> are inseparable.
+    從設計視角出發，我將<em>學術嚴謹</em>與行銷實戰經驗融合，協助組織在數位轉型浪潮中找到自己的位置。從品牌敘事到跨職能專案管理，我深信<em>好的設計與清晰的策略</em>從來不可分割。
   </p>
 </section>
 
 <!-- ══════════ SKILLS ══════════ -->
 <section class="skills-section" id="skills">
   <div class="skills-header">
-    <div class="section-eyebrow">Expertise</div>
-    <h2 class="section-title">What I<br><em>bring</em><br>to the table</h2>
+    <div class="section-eyebrow">專業能力</div>
+    <h2 class="section-title">我能<br><em>帶來</em><br>什麼</h2>
   </div>
   <div class="skills-grid">
     <div class="skill-card">
       <div class="skill-card-num">01</div>
-      <div class="skill-card-name">Brand Strategy</div>
-      <div class="skill-card-desc">Building cohesive brand identities that resonate — from positioning to visual language.</div>
+      <div class="skill-card-name">品牌策略</div>
+      <div class="skill-card-desc">從品牌定位到視覺語言，打造具市場共鳴的品牌形象與傳播主軸。</div>
     </div>
     <div class="skill-card">
       <div class="skill-card-num">02</div>
-      <div class="skill-card-name">Project Management</div>
-      <div class="skill-card-desc">Keeping complex, multi-stakeholder projects on track with clear structure and accountability.</div>
+      <div class="skill-card-name">整合行銷</div>
+      <div class="skill-card-desc">跨媒體內容規劃、KOL 合作溝通，推動多管道品牌傳播最大化。</div>
     </div>
     <div class="skill-card">
       <div class="skill-card-num">03</div>
-      <div class="skill-card-name">Graphic Design</div>
-      <div class="skill-card-desc">Translating strategy into compelling visuals across print, digital, and social media.</div>
+      <div class="skill-card-name">視覺設計</div>
+      <div class="skill-card-desc">精通 Adobe 全套工具，獨立完成跨媒體視覺製作與印刷發包管理。</div>
     </div>
     <div class="skill-card">
       <div class="skill-card-num">04</div>
-      <div class="skill-card-name">AI-Powered Work</div>
-      <div class="skill-card-desc">Leveraging AI tools across diverse contexts to increase output quality and efficiency.</div>
+      <div class="skill-card-name">專案管理</div>
+      <div class="skill-card-desc">統籌複雜多方利害關係人專案，建立清晰結構與執行責任，確保如期如質。</div>
     </div>
+    <div class="skill-card">
+      <div class="skill-card-num">05</div>
+      <div class="skill-card-name">內容創作</div>
+      <div class="skill-card-desc">精準撰寫社群文案、新聞稿與簡報，根據不同平台特性調整溝通策略。</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-num">06</div>
+      <div class="skill-card-name">AI 輔助工作流</div>
+      <div class="skill-card-desc">結合 AI 工具於文案、視覺概念與策略分析，創意提案效率提升 50% 以上。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PORTFOLIO ══════════ -->
+<section class="portfolio-section" id="works">
+  <div class="portfolio-head">
+    <div>
+      <div class="section-eyebrow">作品集</div>
+      <h2 class="section-title">精選<br><em>作品</em></h2>
+    </div>
+    <div class="portfolio-tabs">
+      <button class="p-tab active" data-cat="print">印刷設計</button>
+      <button class="p-tab" data-cat="curation">策展及形象布置</button>
+      <button class="p-tab" data-cat="storefront">店面外觀</button>
+      <button class="p-tab" data-cat="kol">KOL 合作</button>
+    </div>
+  </div>
+
+  <div id="pGrid" class="portfolio-grid"></div>
+  <div id="kolEmpty" class="kol-empty">
+    <div class="kol-empty-sym">◈</div>
+    <p class="kol-empty-txt">合作案例即將上線</p>
   </div>
 </section>
 
 <!-- ══════════ TOOLS ══════════ -->
 <div class="tools-section">
   <div class="tools-inner">
-    <div class="tools-label">Tools & Software</div>
+    <div class="tools-label">常用工具</div>
     <div class="tools-divider"></div>
     <div class="tools-list">
       <span class="tool-pill">Adobe Illustrator</span>
       <span class="tool-pill">Photoshop</span>
+      <span class="tool-pill">Canva</span>
       <span class="tool-pill">Notion</span>
       <span class="tool-pill">Vocol.ai</span>
-      <span class="tool-pill">Canva</span>
       <span class="tool-pill">Microsoft 365</span>
+      <span class="tool-pill">CapCut</span>
       <span class="tool-pill">Claude</span>
     </div>
   </div>
@@ -708,23 +870,23 @@
 
 <!-- ══════════ CONTACT ══════════ -->
 <section class="contact-section" id="contact">
-  <div class="contact-left">
-    <div class="section-eyebrow">Contact</div>
-    <h2 class="contact-cta">Let's work<br><em>together.</em></h2>
+  <div>
+    <div class="section-eyebrow">聯絡</div>
+    <h2 class="contact-cta">期待與你<br><em>共創。</em></h2>
     <a class="contact-email" href="mailto:lintsai186@gmail.com">lintsai186@gmail.com</a>
   </div>
-  <button class="btn-resume" onclick="openResume()" style="align-self:flex-end">
-    <svg viewBox="0 0 20 20" fill="currentColor" style="width:14px;height:14px">
-      <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-1-1 1 1 0 001 1zm1-3a1 1 0 110 2H9a1 1 0 010-2h1zm3 0a1 1 0 110 2h-1a1 1 0 010-2h1z" clip-rule="evenodd"/>
+  <button class="btn-primary" onclick="openResume()" style="align-self:flex-end">
+    <svg viewBox="0 0 20 20" fill="currentColor" style="width:14px;height:14px;flex-shrink:0">
+      <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 5a1 1 0 00-1 1v3H8a1 1 0 000 2h2v1a1 1 0 002 0v-1h2a1 1 0 000-2h-2V8a1 1 0 00-1-1z" clip-rule="evenodd"/>
     </svg>
-    View Resume
+    查看履歷
   </button>
 </section>
 
 <!-- ══════════ FOOTER ══════════ -->
 <footer>
   <span>Belinda Lin · lintsai186@gmail.com</span>
-  <span>Updated May 2026</span>
+  <span>更新於 2026 年 5 月</span>
 </footer>
 
 <!-- ══════════ RESUME OVERLAY ══════════ -->
@@ -732,12 +894,12 @@
   <div class="overlay-backdrop" onclick="closeResume()"></div>
   <div class="overlay-panel">
     <div class="overlay-header">
-      <span>Belinda Lin — Resume</span>
+      <span>Belinda Lin — 履歷</span>
       <button class="overlay-close" onclick="closeResume()">
         <svg viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
         </svg>
-        Close
+        關閉
       </button>
     </div>
     <div class="overlay-body">
@@ -753,106 +915,151 @@
               </svg>
             </div>
             <div class="r-name">Belinda Lin</div>
-            <div class="r-role">Marketing · Design · Management</div>
+            <div class="r-role">行銷 · 設計 · 管理</div>
           </div>
 
           <div>
-            <div class="r-s-title">Contact</div>
+            <div class="r-s-title">聯絡方式</div>
             <div class="r-contact-item">
               <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
               lintsai186@gmail.com
             </div>
             <div class="r-contact-item" style="margin-top:8px">
               <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
-              Taiwan · Taichung / Taipei
+              台灣 · 台中 / 台北
             </div>
           </div>
 
           <div>
-            <div class="r-s-title">Core Skills</div>
-            <div class="r-skill-row"><div class="r-skill-name">Brand Strategy</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:92%"></div></div></div>
-            <div class="r-skill-row"><div class="r-skill-name">Project Management</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:90%"></div></div></div>
-            <div class="r-skill-row"><div class="r-skill-name">Graphic Design</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:88%"></div></div></div>
-            <div class="r-skill-row"><div class="r-skill-name">Marketing & Content</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:85%"></div></div></div>
-            <div class="r-skill-row"><div class="r-skill-name">Digital Tool Integration</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:80%"></div></div></div>
+            <div class="r-s-title">核心技能</div>
+            <div class="r-skill-row"><div class="r-skill-name">品牌策略</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:92%"></div></div></div>
+            <div class="r-skill-row"><div class="r-skill-name">整合行銷</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:90%"></div></div></div>
+            <div class="r-skill-row"><div class="r-skill-name">視覺設計</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:92%"></div></div></div>
+            <div class="r-skill-row"><div class="r-skill-name">專案管理</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:88%"></div></div></div>
+            <div class="r-skill-row"><div class="r-skill-name">AI 工作流整合</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:82%"></div></div></div>
           </div>
 
           <div>
-            <div class="r-s-title">Tools & Software</div>
+            <div class="r-s-title">工具與軟體</div>
             <div class="r-tags">
               <span class="r-tag">Adobe Illustrator</span>
               <span class="r-tag">Photoshop</span>
+              <span class="r-tag">Canva</span>
               <span class="r-tag">Notion</span>
               <span class="r-tag">Vocol.ai</span>
-              <span class="r-tag">Canva</span>
               <span class="r-tag">Microsoft 365</span>
+              <span class="r-tag">CapCut</span>
               <span class="r-tag">Claude</span>
             </div>
           </div>
 
           <div>
-            <div class="r-s-title">Certifications</div>
-            <div class="r-cert">Advertising Engineering — Class A</div>
-            <div class="r-cert" style="margin-top:6px">Advertising Design — Class C</div>
+            <div class="r-s-title">專業證照</div>
+            <div class="r-cert">廣告工程甲級</div>
+            <div class="r-cert" style="margin-top:6px">廣告設計丙級</div>
           </div>
         </aside>
 
         <!-- Main -->
         <main class="r-main">
           <div class="r-summary">
-            Marketing professional with a strong academic foundation and extensive industry experience, specializing in brand strategy, integrated marketing planning, and project management. Adept at driving communication through design thinking — balancing creative expression with business impact to help organizations build clear brand positioning and sustainable marketing ecosystems in the age of digital transformation.
+            具平面設計與行銷研究背景，現任專案管理師，擁有超過 11 年橫跨廣告設計、活動企劃、學術行政與整合行銷的實務經驗。擅長品牌策略規劃、跨媒體視覺製作與多方利害關係人專案統籌，致力於以設計思維驅動品牌成效，在數位轉型時代持續建立清晰、有溫度的品牌溝通。
           </div>
 
           <div class="r-section">
-            <div class="r-section-title"><div class="r-dot"></div>Work Experience</div>
+            <div class="r-section-title"><div class="r-dot"></div>工作經歷</div>
+
             <div class="r-exp">
               <div class="r-exp-top">
-                <div class="r-exp-org">Corporate Synergy Development Center (CSD)</div>
-                <div class="r-exp-date">2025 — Present</div>
+                <div class="r-exp-org">財團法人中衛發展中心（CSD）</div>
+                <div class="r-exp-date">2025/7 — 至今</div>
               </div>
-              <div class="r-exp-role">Marketing Planner / Project Manager</div>
+              <div class="r-exp-role">專案管理師 · 行銷企劃 · 台中</div>
               <ul class="r-exp-bullets">
-                <li>Led brand strategy planning and annual marketing execution, overseeing cross-media campaigns and event promotions.</li>
-                <li>Directed local revitalization and sustainable tourism projects, coordinating between government agencies, enterprises, and community partners.</li>
-                <li>Integrated visual design and copywriting to produce diverse materials including websites, social media content, and publications.</li>
-                <li>Leveraged AI tools across diverse work contexts to streamline workflows and enhance personal productivity.</li>
+                <li>負責行銷策略擬定、宣傳內容企劃與視覺溝通整合。</li>
+                <li>統籌 KOL／創作者合作規劃，推動制度推廣與品牌化操作。</li>
+                <li>跨單位、跨產業利害關係人協調與執行整合，撰寫專案計畫書與對外簡報。</li>
+              </ul>
+            </div>
+
+            <div class="r-exp">
+              <div class="r-exp-top">
+                <div class="r-exp-org">朝陽科技大學</div>
+                <div class="r-exp-date">2020/3 — 2023/9</div>
+              </div>
+              <div class="r-exp-role">計畫管考窗口 · 專案管理主管（管理 4 人以下）· 台中霧峰</div>
+              <ul class="r-exp-bullets">
+                <li>統籌 USR 計畫績效管考與整合報表，規劃執行逾 50 場講座與跨校交流活動。</li>
+                <li>擔任「2023 USR 中區社會參與跨校共學聯展」主要策展人。</li>
+                <li>協助爭取遠見 USR 大學社會責任獎、TSAA 永續行動獎等多項肯定。</li>
+              </ul>
+            </div>
+
+            <div class="r-exp">
+              <div class="r-exp-top">
+                <div class="r-exp-org">禾盛企業</div>
+                <div class="r-exp-date">2015/8 — 至今</div>
+              </div>
+              <div class="r-exp-role">專案規劃師 · 專案管理主管 · 台中霧峰</div>
+              <ul class="r-exp-bullets">
+                <li>策劃並執行超過百場品牌活動與商務專案，包含婚禮、尾牙、動土典禮、大型露營等。</li>
+                <li>規劃場地動線、佈置視覺與舞台設計，控管活動預算與資源配置。</li>
+              </ul>
+            </div>
+
+            <div class="r-exp">
+              <div class="r-exp-top">
+                <div class="r-exp-org">嘉禾廣告</div>
+                <div class="r-exp-date">2007/7 — 2011/6</div>
+              </div>
+              <div class="r-exp-role">設計與執行統籌 · 商業設計 · 台中北屯</div>
+              <ul class="r-exp-bullets">
+                <li>負責從設計提案至現場施作的全流程整合，提供一站式專業服務。</li>
+                <li>熟悉大型輸出、異材質應用與施工監控流程，確保空間視覺整體一致性。</li>
               </ul>
             </div>
           </div>
 
           <div class="r-section">
-            <div class="r-section-title"><div class="r-dot"></div>Education</div>
+            <div class="r-section-title"><div class="r-dot"></div>學歷</div>
             <div>
               <div class="r-edu-top">
-                <div class="r-edu-school">National Changhua University of Education (NCUE)</div>
-                <div class="r-edu-date">Master's Degree</div>
+                <div class="r-edu-school">國立彰化師範大學（NCUE）</div>
+                <div class="r-edu-date">2023 — 2025</div>
               </div>
-              <div class="r-edu-degree">Graduate Institute of Marketing and Circulation Management</div>
+              <div class="r-edu-degree">企業管理學系行銷與流通管理碩士</div>
               <div class="r-edu-honor">
                 <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                Phi Tau Phi Honor Society Member
+                斐陶斐榮譽會員 · 學習楷模 · 2024 Linker 行銷競賽全國第一
               </div>
+            </div>
+            <div style="margin-top:12px">
+              <div class="r-edu-top">
+                <div class="r-edu-school">私立樹德科技大學</div>
+                <div class="r-edu-date">2003 — 2007</div>
+              </div>
+              <div class="r-edu-degree">視覺傳達設計學士</div>
             </div>
           </div>
 
           <div class="r-section">
-            <div class="r-section-title"><div class="r-dot"></div>Core Strengths</div>
+            <div class="r-section-title"><div class="r-dot"></div>核心特質</div>
             <div class="r-values">
               <div class="r-value">
-                <div class="r-value-label">Detail-Oriented</div>
-                <div class="r-value-desc">High standards for visual and content quality — every output is precise and purposeful</div>
+                <div class="r-value-label">細節敏銳</div>
+                <div class="r-value-desc">對視覺與文字品質有高度要求，每件輸出物都精準且有目的</div>
               </div>
               <div class="r-value">
-                <div class="r-value-label">Impact-Driven</div>
-                <div class="r-value-desc">Results-oriented mindset balancing creativity with the best use of resources</div>
+                <div class="r-value-label">追求效益</div>
+                <div class="r-value-desc">成效導向思維，在創意與資源最佳運用之間取得最佳平衡</div>
               </div>
               <div class="r-value">
-                <div class="r-value-label">Adaptable</div>
-                <div class="r-value-desc">Responds quickly to change by integrating resources and adjusting strategies</div>
+                <div class="r-value-label">應變靈活</div>
+                <div class="r-value-desc">快速整合資源、調整策略，從容應對高壓與複雜情境</div>
               </div>
               <div class="r-value">
-                <div class="r-value-label">Grounded & Steady</div>
-                <div class="r-value-desc">Systematic thinker who ensures long-term goals are consistently delivered</div>
+                <div class="r-value-label">踏實穩健</div>
+                <div class="r-value-desc">系統性思考，確保長遠目標在每個執行環節持續落實</div>
               </div>
             </div>
           </div>
@@ -861,15 +1068,142 @@
         <div class="r-footer">
           <span>Belinda Lin</span>
           <span>lintsai186@gmail.com</span>
-          <span>Updated May 2026</span>
+          <span>更新於 2026 年 5 月</span>
         </div>
-
       </div>
     </div>
   </div>
 </div>
 
+<!-- ══════════ LIGHTBOX ══════════ -->
+<div class="lightbox" id="lightbox">
+  <div class="lb-backdrop" onclick="closeLightbox()"></div>
+  <button class="lb-btn lb-prev" onclick="lbNav(-1)">
+    <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
+      <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/>
+    </svg>
+  </button>
+  <div class="lb-content">
+    <img class="lb-img" id="lbImg" src="" alt="" />
+  </div>
+  <button class="lb-btn lb-next" onclick="lbNav(1)">
+    <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
+      <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+    </svg>
+  </button>
+  <button class="lb-close" onclick="closeLightbox()">
+    <svg viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+    </svg>
+    關閉
+  </button>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+
 <script>
+  // Portfolio data — Google Drive thumbnail helper
+  const gd = (id, sz) => `https://drive.google.com/thumbnail?id=${id}&sz=${sz || 'w800'}`;
+
+  const data = {
+    print: [
+      { id: '1l8gYajXHIvykwJWYm8uNmt-8cfYKjdf3',  tag: '印刷設計' },
+      { id: '1UgIYfuh4t0IbP1DpQ9dGXBmfqbwZkEmm',  tag: '印刷設計' },
+      { id: '1-IdZWaSZMn2L6bTW7TYEG3sA_1s_HKqk',  tag: '印刷設計' },
+      { id: '1sesKNw4F1mTFIbRVBBobSk3oQ7AuyEhd',  tag: '印刷設計' },
+      { id: '1lKPpYgYxycpCMjxvZnF27uqjSWO_qSbG',  tag: '印刷設計' },
+      { id: '1vPUI-adGZaoAcTSSApXCLiHjUjnlOPGw',  tag: '印刷設計' },
+      { id: '1y9c6T-gm-Sw7rvPuVJKWbvsYaDwCeFMZ',  tag: '包裝設計' },
+      { id: '1OQ68Eq9dMLNQ_DIw7oouUI7LCbKd_bIY',  tag: '包裝設計' },
+      { id: '1MIgZdSlx3NpH-SsrvVfpvcUy7pFbQUfV',  tag: '包裝設計' },
+      { id: '1SD-wi2QeLQLDJzQjA1kD5iB2cd0EHPJy',  tag: '包裝設計' },
+      { id: '1UOCG62yERM51BvVpRVKsKuBwtuP6Pc-t',  tag: '海報' },
+      { id: '1pASlibugqPJHeZWIfhSFgEuUf542VE0f',  tag: '海報' },
+      { id: '1f8H7A1JoJpF8EAcSfK87R0OR0iAaJYIr',  tag: '海報' },
+      { id: '1bRb-4wd-9BAr5ncRG6cP3j-B_8O9Tin_',  tag: '海報' },
+    ],
+    curation: [
+      { id: '1fjI48CulUmsE9TFg5o6JQ6_Zk0mfPumq',  tag: '策展布置' },
+      { id: '1diulMp6fS2TjI6VpNC6UpyvRMpouL3pW',  tag: '策展布置' },
+      { id: '11WX6IwddXwcLkpTCj4dvfH9KHVeXqOJ6',  tag: '策展布置' },
+      { id: '1DxcBsQRZG2w6E7Cr9cXhEaDzTpjEjTjr',  tag: '策展布置' },
+      { id: '1UF-Er3-TxlUumwxaNwzMTgJgdKObYELd',  tag: '形象布置' },
+      { id: '1faTIgFa9dufe7mAET7e4nM_dR3gpshPu',  tag: '形象布置' },
+      { id: '1JbzR40dRKLEiS-fc2a_EhNuaHdW5Z_fL',  tag: '形象布置' },
+      { id: '19XgixaIVfvRFGw0LMDjwe9D9vB6EY1E3',  tag: '形象布置' },
+      { id: '1-Fp9SwRpP5-Ij3DsTP7Etyds-A-hHv8i',  tag: '形象布置' },
+    ],
+    storefront: [
+      { id: '1R6PwrpTKCyz8MMBNJ_spsN48vP_bAGdX',  tag: '店面設計' },
+      { id: '1rbd7BeGeBt2hJrkJezuq5JgizIzT0Rft',  tag: '店面設計' },
+      { id: '193qxsccFbBqlfEan0l2z6d6LQ3Cmj1-C',  tag: '店面設計' },
+      { id: '1h_TtfiVNa214mRAXkiCnTokvjZo8l0sJ',  tag: '店面設計' },
+      { id: '1EW3DT_MNErB_MaTpUCypElU2WLkOCYsj',  tag: '店面設計' },
+      { id: '1BGf_idTMELfQqy-CvCOU03dBQA1JSks1',  tag: '店面設計' },
+    ],
+    kol: []
+  };
+
+  let curCat = 'print';
+  let curIdx = 0;
+  let curItems = [];
+
+  function renderPortfolio(cat) {
+    curCat = cat;
+    curItems = data[cat];
+    const grid = document.getElementById('pGrid');
+    const empty = document.getElementById('kolEmpty');
+
+    if (!curItems.length) {
+      grid.style.display = 'none';
+      empty.classList.add('show');
+      return;
+    }
+    grid.style.display = 'grid';
+    empty.classList.remove('show');
+
+    grid.innerHTML = curItems.map((item, i) => `
+      <div class="p-item" onclick="openLb(${i})">
+        <img src="${gd(item.id)}" alt="${item.tag}" loading="lazy" />
+        <div class="p-item-overlay">
+          <span class="p-item-label">${item.tag}</span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  document.querySelectorAll('.p-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.p-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderPortfolio(btn.dataset.cat);
+    });
+  });
+
+  renderPortfolio('print');
+
+  // Lightbox
+  function openLb(i) {
+    curIdx = i;
+    updateLb();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function updateLb() {
+    const item = curItems[curIdx];
+    document.getElementById('lbImg').src = gd(item.id, 'w1600');
+    document.getElementById('lbImg').alt = item.tag;
+    document.getElementById('lbCounter').textContent = `${curIdx + 1} / ${curItems.length}`;
+  }
+  function lbNav(d) {
+    curIdx = (curIdx + d + curItems.length) % curItems.length;
+    updateLb();
+  }
+
+  // Resume overlay
   function openResume() {
     document.getElementById('resumeOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -878,7 +1212,15 @@
     document.getElementById('resumeOverlay').classList.remove('open');
     document.body.style.overflow = '';
   }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeResume(); });
+
+  // Keyboard
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeLightbox(); closeResume(); }
+    if (document.getElementById('lightbox').classList.contains('open')) {
+      if (e.key === 'ArrowLeft') lbNav(-1);
+      if (e.key === 'ArrowRight') lbNav(1);
+    }
+  });
 </script>
 
 </body>
