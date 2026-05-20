@@ -369,6 +369,67 @@
       color: var(--muted);
     }
 
+    /* KOL reel cards */
+    .kol-grid {
+      display: none;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .kol-grid.show { display: grid; }
+    .kol-card {
+      background: var(--white);
+      border: 1px solid var(--tan-l);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .kol-frame-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 177.78%;
+      background: var(--cream);
+      overflow: hidden;
+    }
+    .kol-frame-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .kol-card-info {
+      padding: 16px 18px;
+      border-top: 1px solid var(--cream-d);
+    }
+    .kol-card-project {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--sienna);
+      margin-bottom: 4px;
+    }
+    .kol-card-partner {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--brown);
+    }
+    .kol-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 10px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--tan-l);
+      padding-bottom: 1px;
+      transition: color 0.2s;
+    }
+    .kol-card-link:hover { color: var(--sienna); }
+    .kol-card-link svg { width: 11px; height: 11px; }
+
     /* ── LIGHTBOX ── */
     .lightbox {
       position: fixed;
@@ -848,6 +909,7 @@
     <div class="kol-empty-sym">◈</div>
     <p class="kol-empty-txt">合作案例即將上線</p>
   </div>
+  <div id="kolGrid" class="kol-grid"></div>
 </section>
 
 <!-- ══════════ TOOLS ══════════ -->
@@ -1140,7 +1202,29 @@
       { id: '1EW3DT_MNErB_MaTpUCypElU2WLkOCYsj',  tag: '店面設計' },
       { id: '1BGf_idTMELfQqy-CvCOU03dBQA1JSks1',  tag: '店面設計' },
     ],
-    kol: []
+    kol: [
+      {
+        shortcode: 'DW3x9_wkjCe',
+        url: 'https://www.instagram.com/reel/DW3x9_wkjCe/',
+        project: '農業共榮市',
+        partner: '冠冠 × CSD',
+        tag: 'KOL 合作'
+      },
+      {
+        shortcode: 'DW_LyI_zdLB',
+        url: 'https://www.instagram.com/reel/DW_LyI_zdLB/',
+        project: '農業共榮市',
+        partner: '西部農場 × CSD',
+        tag: 'KOL 合作'
+      },
+      {
+        shortcode: 'DRUcSO4E3Lv',
+        url: 'https://www.instagram.com/reel/DRUcSO4E3Lv/',
+        project: '南投永續觀光',
+        partner: '路易 × CSD',
+        tag: 'KOL 合作'
+      }
+    ]
   };
 
   let curCat = 'print';
@@ -1152,15 +1236,44 @@
     curItems = data[cat];
     const grid = document.getElementById('pGrid');
     const empty = document.getElementById('kolEmpty');
+    const kolGrid = document.getElementById('kolGrid');
 
-    if (!curItems.length) {
-      grid.style.display = 'none';
-      empty.classList.add('show');
+    // Reset all containers
+    grid.style.display = 'none';
+    empty.classList.remove('show');
+    kolGrid.classList.remove('show');
+
+    if (cat === 'kol') {
+      if (!curItems.length) {
+        empty.classList.add('show');
+        return;
+      }
+      kolGrid.classList.add('show');
+      kolGrid.innerHTML = curItems.map(item => `
+        <div class="kol-card">
+          <div class="kol-frame-wrap">
+            <iframe
+              src="https://www.instagram.com/reel/${item.shortcode}/embed/"
+              scrolling="no"
+              allowtransparency="true"
+              allow="encrypted-media"
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="kol-card-info">
+            <div class="kol-card-project">${item.project}</div>
+            <div class="kol-card-partner">${item.partner}</div>
+            <a class="kol-card-link" href="${item.url}" target="_blank" rel="noopener">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"/></svg>
+              在 Instagram 觀看
+            </a>
+          </div>
+        </div>
+      `).join('');
       return;
     }
-    grid.style.display = 'grid';
-    empty.classList.remove('show');
 
+    grid.style.display = 'grid';
     grid.innerHTML = curItems.map((item, i) => `
       <div class="p-item" onclick="openLb(${i})">
         <img src="${gd(item.id)}" alt="${item.tag}" loading="lazy" />
