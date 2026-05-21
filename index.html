@@ -377,6 +377,28 @@
     }
     .curate-section.show { display: block; }
     .curate-group { margin-bottom: 48px; }
+    .curate-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2px;
+    }
+    .curate-photo-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 4/3;
+      background: var(--cream);
+    }
+    .curate-photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+    .curate-photo-item:hover img { transform: scale(1.05); }
+    .curate-photo-item:hover .p-item-overlay { background: rgba(61,43,31,0.45); }
+    .curate-photo-item:hover .p-item-label { opacity: 1; transform: translateY(0); }
     .curate-group:last-child { margin-bottom: 0; }
     .curate-group-label {
       font-size: 10px;
@@ -1303,6 +1325,9 @@
       { id: '1bRb-4wd-9BAr5ncRG6cP3j-B_8O9Tin_',  tag: '海報' },
     ],
     curate: {
+      photos: [
+        { id: '12Xhn25aB57v5H6R7gwJ__BRvDB11mHiz', tag: '農業跨域趨勢論壇 × 農業共榮市集' }
+      ],
       videos: [
         {
           ytId: '1A8MznajiTc',
@@ -1404,6 +1429,22 @@
       const d = data.curate;
       curateSection.classList.add('show');
       let html = '';
+
+      if (d.photos && d.photos.length) {
+        html += `<div class="curate-group">
+          <div class="curate-group-label">活動現場</div>
+          <div class="curate-photo-grid">
+            ${d.photos.map(p => `
+              <div class="curate-photo-item">
+                <img src="${gd(p.id)}" alt="${p.tag}" loading="lazy" />
+                <div class="p-item-overlay">
+                  <span class="p-item-label">${p.tag}</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>`;
+      }
 
       if (d.videos.length) {
         html += `<div class="curate-group">
