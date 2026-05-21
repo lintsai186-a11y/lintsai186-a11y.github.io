@@ -328,6 +328,7 @@
       display: block;
     }
     .p-item:hover img { transform: scale(1.05); }
+    .p-item--print img { object-position: top center; }
     .p-item-overlay {
       position: absolute;
       inset: 0;
@@ -1501,8 +1502,9 @@
     }
 
     grid.style.display = 'grid';
+    const isPrint = cat === 'print';
     grid.innerHTML = curItems.map((item, i) => `
-      <div class="p-item" onclick="openLb(${i})">
+      <div class="p-item${isPrint ? ' p-item--print' : ''}" onclick="openLb(${i})">
         <img src="${gd(item.id)}" alt="${item.tag}" loading="lazy" />
         <div class="p-item-overlay">
           <span class="p-item-label">${item.tag}</span>
