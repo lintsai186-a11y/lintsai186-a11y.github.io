@@ -850,9 +850,10 @@
       border-radius: 50%;
       border: 2px solid var(--tan);
       background: var(--brown-m);
-      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
     }
-    .r-avatar svg { width: 44px; height: 44px; opacity: 0.45; }
+    .r-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
     .r-name {
       font-family: 'DM Serif Display', serif;
       font-size: 20px;
@@ -1158,10 +1159,7 @@
         <aside class="r-sidebar">
           <div>
             <div class="r-avatar">
-              <svg viewBox="0 0 64 64" fill="none">
-                <circle cx="32" cy="22" r="12" fill="rgba(255,255,255,0.4)"/>
-                <path d="M8 56c0-13.255 10.745-24 24-24s24 10.745 24 24" fill="rgba(255,255,255,0.4)"/>
-              </svg>
+              <img src="images/avatar.jpg" alt="Belinda Lin" />
             </div>
             <div class="r-name">Belinda Lin</div>
             <div class="r-role">行銷 · 設計 · 管理</div>
