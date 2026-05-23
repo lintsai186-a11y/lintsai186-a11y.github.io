@@ -614,6 +614,61 @@
     .kol-card-link:hover { color: var(--sienna); }
     .kol-card-link svg { width: 11px; height: 11px; }
 
+    /* KOL 成效數據 */
+    .kol-campaign-bar {
+      grid-column: 1 / -1;
+      background: var(--white);
+      border: 1px solid var(--tan-l);
+      border-radius: 2px;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .kol-campaign-item { flex: 1; text-align: center; }
+    .kol-campaign-item + .kol-campaign-item { border-left: 1px solid var(--cream-d); }
+    .kol-campaign-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 30px;
+      color: var(--sienna);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .kol-campaign-label {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+    .kol-stats {
+      display: flex;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--cream-d);
+    }
+    .kol-stat { flex: 1; text-align: center; padding: 2px 6px; }
+    .kol-stat + .kol-stat { border-left: 1px solid var(--cream-d); }
+    .kol-stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--brown);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .kol-stat-num.accent { color: var(--sienna); }
+    .kol-stat-label { font-size: 9px; letter-spacing: 0.1em; color: var(--muted); }
+    .kol-platform-tag {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      padding: 2px 9px;
+      background: rgba(160,82,45,0.07);
+      color: var(--sienna);
+      border: 1px solid rgba(160,82,45,0.15);
+      border-radius: 2px;
+    }
+
     /* ── LIGHTBOX ── */
     .lightbox {
       position: fixed;
@@ -1418,21 +1473,37 @@
         url: 'https://www.instagram.com/reel/DW3x9_wkjCe/',
         project: '農業共榮市集',
         partner: '冠冠 × CSD',
-        tag: 'KOL 合作'
+        tag: 'KOL 合作',
+        stats: [
+          { num: '5.6萬', label: '觀看次數', accent: true },
+          { num: '3.6萬', label: '觸及人數' },
+          { num: '7.8%',  label: '按讚率' }
+        ]
       },
       {
         shortcode: 'DW_LyI_zdLB',
         url: 'https://www.instagram.com/reel/DW_LyI_zdLB/',
         project: '農業共榮市集',
         partner: '西部農場 × CSD',
-        tag: 'KOL 合作'
+        tag: 'KOL 合作',
+        platform: 'IG + FB 跨平台',
+        stats: [
+          { num: '91.9萬', label: '總觀看次數', accent: true },
+          { num: '1.9萬',  label: '互動次數' },
+          { num: '1,086',  label: '分享次數' }
+        ]
       },
       {
         shortcode: 'DRUcSO4E3Lv',
         url: 'https://www.instagram.com/reel/DRUcSO4E3Lv/',
         project: '南投永續觀光',
         partner: '路易 × CSD',
-        tag: 'KOL 合作'
+        tag: 'KOL 合作',
+        stats: [
+          { num: '4.2萬', label: '觀看次數', accent: true },
+          { num: '47',    label: '互動留言' },
+          { num: '26',    label: '轉發次數' }
+        ]
       }
     ]
   };
@@ -1515,7 +1586,26 @@
         return;
       }
       kolGrid.classList.add('show');
-      kolGrid.innerHTML = curItems.map(item => `
+      const campaignBar = `
+        <div class="kol-campaign-bar">
+          <div class="kol-campaign-item">
+            <div class="kol-campaign-num">100萬+</div>
+            <div class="kol-campaign-label">合計觀看次數</div>
+          </div>
+          <div class="kol-campaign-item">
+            <div class="kol-campaign-num">3</div>
+            <div class="kol-campaign-label">KOL 合作人次</div>
+          </div>
+          <div class="kol-campaign-item">
+            <div class="kol-campaign-num">2</div>
+            <div class="kol-campaign-label">執行專案</div>
+          </div>
+          <div class="kol-campaign-item">
+            <div class="kol-campaign-num">IG · FB</div>
+            <div class="kol-campaign-label">跨平台觸及</div>
+          </div>
+        </div>`;
+      kolGrid.innerHTML = campaignBar + curItems.map(item => `
         <div class="kol-card">
           <div class="kol-embed-wrap">
             <blockquote
@@ -1528,14 +1618,22 @@
           <div class="kol-card-info">
             <div class="kol-card-project">${item.project}</div>
             <div class="kol-card-partner">${item.partner}</div>
+            ${item.platform ? `<div class="kol-platform-tag">${item.platform}</div>` : ''}
             <a class="kol-card-link" href="${item.url}" target="_blank" rel="noopener">
               <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"/></svg>
               在 Instagram 觀看
             </a>
+            ${item.stats ? `
+              <div class="kol-stats">
+                ${item.stats.map(s => `
+                  <div class="kol-stat">
+                    <div class="kol-stat-num${s.accent ? ' accent' : ''}">${s.num}</div>
+                    <div class="kol-stat-label">${s.label}</div>
+                  </div>`).join('')}
+              </div>` : ''}
           </div>
         </div>
       `).join('');
-      // 通知 Instagram embed.js 處理新插入的 blockquote
       if (window.instgrm) window.instgrm.Embeds.process();
       return;
     }
