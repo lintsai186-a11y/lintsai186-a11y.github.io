@@ -349,6 +349,21 @@
       transition: opacity 0.3s, transform 0.3s;
     }
     .p-item:hover .p-item-label { opacity: 1; transform: translateY(0); }
+    .p-item-ext-badge {
+      position: absolute;
+      top: 10px; right: 10px;
+      background: rgba(61,43,31,0.72);
+      color: rgba(255,255,255,0.9);
+      font-size: 8.5px;
+      letter-spacing: 0.08em;
+      padding: 3px 7px;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      backdrop-filter: blur(2px);
+    }
+    .p-item-ext-badge svg { width: 9px; height: 9px; opacity: 0.85; }
 
     /* KOL placeholder */
     .kol-empty {
@@ -1428,6 +1443,7 @@
       { id: '1pASlibugqPJHeZWIfhSFgEuUf542VE0f',  tag: '海報' },
       { id: '1f8H7A1JoJpF8EAcSfK87R0OR0iAaJYIr',  tag: '海報' },
       { id: '1bRb-4wd-9BAr5ncRG6cP3j-B_8O9Tin_',  tag: '海報', trim: true },
+      { src: 'https://online.anyflip.com/qmrjx/yvyh/files/mobile/1.jpg', tag: '永續小冊', link: 'https://online.anyflip.com/qmrjx/yvyh/mobile/index.html' },
     ],
     curate: {
       events: [
@@ -1636,11 +1652,12 @@
     grid.style.display = 'grid';
     const isPrint = cat === 'print';
     grid.innerHTML = curItems.map((item, i) => `
-      <div class="p-item${isPrint ? ' p-item--print' : ''}${item.trim ? ' p-item--trim' : ''}" onclick="openLb(${i})">
+      <div class="p-item${isPrint ? ' p-item--print' : ''}${item.trim ? ' p-item--trim' : ''}" onclick="${item.link ? `window.open('${item.link}','_blank')` : `openLb(${i})`}">
         <img src="${itemSrc(item)}" alt="${item.tag}" loading="lazy" />
         <div class="p-item-overlay">
           <span class="p-item-label">${item.tag}</span>
         </div>
+        ${item.link ? `<div class="p-item-ext-badge"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>翻頁小冊</div>` : ''}
       </div>
     `).join('');
   }
