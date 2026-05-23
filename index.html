@@ -329,6 +329,7 @@
     }
     .p-item:hover img { transform: scale(1.05); }
     .p-item--print img { object-position: top center; }
+    .p-item--trim img  { transform: scale(1.12); object-position: center center; }
     .p-item-overlay {
       position: absolute;
       inset: 0;
@@ -1367,7 +1368,7 @@
       { id: '1UOCG62yERM51BvVpRVKsKuBwtuP6Pc-t',  tag: '海報' },
       { id: '1pASlibugqPJHeZWIfhSFgEuUf542VE0f',  tag: '海報' },
       { id: '1f8H7A1JoJpF8EAcSfK87R0OR0iAaJYIr',  tag: '海報' },
-      { id: '1bRb-4wd-9BAr5ncRG6cP3j-B_8O9Tin_',  tag: '海報' },
+      { id: '1bRb-4wd-9BAr5ncRG6cP3j-B_8O9Tin_',  tag: '海報', trim: true },
     ],
     curate: {
       events: [
@@ -1544,7 +1545,7 @@
     grid.style.display = 'grid';
     const isPrint = cat === 'print';
     grid.innerHTML = curItems.map((item, i) => `
-      <div class="p-item${isPrint ? ' p-item--print' : ''}" onclick="openLb(${i})">
+      <div class="p-item${isPrint ? ' p-item--print' : ''}${item.trim ? ' p-item--trim' : ''}" onclick="openLb(${i})">
         <img src="${itemSrc(item)}" alt="${item.tag}" loading="lazy" />
         <div class="p-item-overlay">
           <span class="p-item-label">${item.tag}</span>
