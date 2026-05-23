@@ -938,7 +938,10 @@
     }
     .r-contact-item svg { width: 12px; height: 12px; opacity: 0.6; flex-shrink: 0; margin-top: 2px; }
     .r-skill-row { margin-bottom: 7px; }
-    .r-skill-name { font-size: 11px; color: rgba(255,255,255,0.85); margin-bottom: 3px; }
+    .r-skill-name { font-size: 11px; color: rgba(255,255,255,0.85); margin-bottom: 3px; display:flex; align-items:center; gap:5px; }
+    .r-skill-tag { font-size: 8px; letter-spacing: 0.06em; padding: 1px 5px; border-radius: 2px; flex-shrink:0; }
+    .r-skill-tag--core { background: rgba(196,149,106,0.25); color: var(--tan); }
+    .r-skill-tag--evolving { background: rgba(160,82,45,0.2); color: #d4895a; }
     .r-skill-bar { height: 3px; background: rgba(255,255,255,0.1); border-radius: 99px; }
     .r-skill-fill { height: 100%; background: var(--tan); border-radius: 99px; }
     .r-tags { display: flex; flex-wrap: wrap; gap: 4px; }
@@ -1228,17 +1231,16 @@
             </div>
             <div class="r-contact-item" style="margin-top:8px">
               <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
-              台灣 · 台中 / 台北
+              台灣 · 台中
             </div>
           </div>
 
           <div>
             <div class="r-s-title">核心技能</div>
-            <div class="r-skill-row"><div class="r-skill-name">品牌策略</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:92%"></div></div></div>
-            <div class="r-skill-row"><div class="r-skill-name">整合行銷</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:90%"></div></div></div>
-            <div class="r-skill-row"><div class="r-skill-name">視覺設計</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:92%"></div></div></div>
-            <div class="r-skill-row"><div class="r-skill-name">專案管理</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:88%"></div></div></div>
-            <div class="r-skill-row"><div class="r-skill-name">AI 工作流整合</div><div class="r-skill-bar"><div class="r-skill-fill" style="width:82%"></div></div></div>
+            <div class="r-skill-row"><div class="r-skill-name">整合行銷 <span class="r-skill-tag r-skill-tag--core">核心</span></div><div class="r-skill-bar"><div class="r-skill-fill" style="width:90%"></div></div></div>
+            <div class="r-skill-row"><div class="r-skill-name">視覺設計 <span class="r-skill-tag r-skill-tag--core">核心</span></div><div class="r-skill-bar"><div class="r-skill-fill" style="width:92%"></div></div></div>
+            <div class="r-skill-row"><div class="r-skill-name">專案管理 <span class="r-skill-tag r-skill-tag--core">核心</span></div><div class="r-skill-bar"><div class="r-skill-fill" style="width:88%"></div></div></div>
+            <div class="r-skill-row"><div class="r-skill-name">AI 輔助工作流 <span class="r-skill-tag r-skill-tag--evolving">進化中</span></div><div class="r-skill-bar"><div class="r-skill-fill" style="width:82%"></div></div></div>
           </div>
 
           <div>
@@ -1300,7 +1302,7 @@
             <div class="r-exp">
               <div class="r-exp-top">
                 <div class="r-exp-org">禾盛企業</div>
-                <div class="r-exp-date">2015/8 — 至今</div>
+                <div class="r-exp-date">2015/8 — 2020/2</div>
               </div>
               <div class="r-exp-role">專案規劃師 · 專案管理主管 · 台中霧峰</div>
               <ul class="r-exp-bullets">
