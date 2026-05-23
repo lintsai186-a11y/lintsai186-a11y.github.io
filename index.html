@@ -1354,11 +1354,11 @@
 
   const data = {
     print: [
-      { id: '1l8gYajXHIvykwJWYm8uNmt-8cfYKjdf3',  tag: '印刷設計' },
+      { src: 'images/lym-moon-logo.jpg',           tag: '品牌識別' },
       { id: '1UgIYfuh4t0IbP1DpQ9dGXBmfqbwZkEmm',  tag: '印刷設計' },
-      { id: '1-IdZWaSZMn2L6bTW7TYEG3sA_1s_HKqk',  tag: '印刷設計' },
+      { src: 'images/zintun-card-b.jpg',           tag: '名片設計' },
       { id: '1sesKNw4F1mTFIbRVBBobSk3oQ7AuyEhd',  tag: '印刷設計' },
-      { id: '1lKPpYgYxycpCMjxvZnF27uqjSWO_qSbG',  tag: '印刷設計' },
+      { src: 'images/zintun-card-c.jpg',           tag: '名片設計' },
       { id: '1vPUI-adGZaoAcTSSApXCLiHjUjnlOPGw',  tag: '印刷設計' },
       { id: '1y9c6T-gm-Sw7rvPuVJKWbvsYaDwCeFMZ',  tag: '包裝設計' },
       { id: '1OQ68Eq9dMLNQ_DIw7oouUI7LCbKd_bIY',  tag: '包裝設計' },
@@ -1501,7 +1501,7 @@
       grid.style.display = 'grid';
       grid.innerHTML = curItems.map((item, i) => `
         <div class="p-item" onclick="openLb(${i})">
-          <img src="${gd(item.id)}" alt="${item.tag}" loading="lazy" />
+          <img src="${itemSrc(item)}" alt="${item.tag}" loading="lazy" />
           <div class="p-item-overlay">
             <span class="p-item-label">${item.tag}</span>
           </div>
@@ -1545,7 +1545,7 @@
     const isPrint = cat === 'print';
     grid.innerHTML = curItems.map((item, i) => `
       <div class="p-item${isPrint ? ' p-item--print' : ''}" onclick="openLb(${i})">
-        <img src="${gd(item.id)}" alt="${item.tag}" loading="lazy" />
+        <img src="${itemSrc(item)}" alt="${item.tag}" loading="lazy" />
         <div class="p-item-overlay">
           <span class="p-item-label">${item.tag}</span>
         </div>
@@ -1574,9 +1574,11 @@
     document.getElementById('lightbox').classList.remove('open');
     document.body.style.overflow = '';
   }
+  function itemSrc(item, sz) { return item.src || gd(item.id, sz); }
+
   function updateLb() {
     const item = curItems[curIdx];
-    document.getElementById('lbImg').src = gd(item.id, 'w1600');
+    document.getElementById('lbImg').src = itemSrc(item, 'w1600');
     document.getElementById('lbImg').alt = item.tag;
     document.getElementById('lbCounter').textContent = `${curIdx + 1} / ${curItems.length}`;
   }
