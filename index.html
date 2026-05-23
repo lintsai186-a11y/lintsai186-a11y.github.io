@@ -615,45 +615,23 @@
     .kol-card-link svg { width: 11px; height: 11px; }
 
     /* KOL 成效數據 */
-    .kol-campaign-bar {
-      grid-column: 1 / -1;
+    .kol-stats {
+      display: flex;
+      margin-top: 14px;
+      padding: 14px 0;
       background: var(--white);
       border: 1px solid var(--tan-l);
       border-radius: 2px;
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      margin-bottom: 8px;
     }
-    .kol-campaign-item { flex: 1; text-align: center; }
-    .kol-campaign-item + .kol-campaign-item { border-left: 1px solid var(--cream-d); }
-    .kol-campaign-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 30px;
-      color: var(--sienna);
-      line-height: 1;
-      margin-bottom: 5px;
-    }
-    .kol-campaign-label {
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      color: var(--muted);
-    }
-    .kol-stats {
-      display: flex;
-      margin-top: 16px;
-      padding-top: 14px;
-      border-top: 1px solid var(--cream-d);
-    }
-    .kol-stat { flex: 1; text-align: center; padding: 2px 6px; }
-    .kol-stat + .kol-stat { border-left: 1px solid var(--cream-d); }
+    .kol-stat { flex: 1; text-align: center; padding: 4px 10px; }
+    .kol-stat + .kol-stat { border-left: 1px solid var(--tan-l); }
     .kol-stat-num {
       font-family: 'DM Serif Display', serif;
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 400;
       color: var(--brown);
       line-height: 1;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
     .kol-stat-num.accent { color: var(--sienna); }
     .kol-stat-label { font-size: 9px; letter-spacing: 0.1em; color: var(--muted); }
@@ -1586,26 +1564,7 @@
         return;
       }
       kolGrid.classList.add('show');
-      const campaignBar = `
-        <div class="kol-campaign-bar">
-          <div class="kol-campaign-item">
-            <div class="kol-campaign-num">100萬+</div>
-            <div class="kol-campaign-label">合計觀看次數</div>
-          </div>
-          <div class="kol-campaign-item">
-            <div class="kol-campaign-num">3</div>
-            <div class="kol-campaign-label">KOL 合作人次</div>
-          </div>
-          <div class="kol-campaign-item">
-            <div class="kol-campaign-num">2</div>
-            <div class="kol-campaign-label">執行專案</div>
-          </div>
-          <div class="kol-campaign-item">
-            <div class="kol-campaign-num">IG · FB</div>
-            <div class="kol-campaign-label">跨平台觸及</div>
-          </div>
-        </div>`;
-      kolGrid.innerHTML = campaignBar + curItems.map(item => `
+      kolGrid.innerHTML = curItems.map(item => `
         <div class="kol-card">
           <div class="kol-embed-wrap">
             <blockquote
