@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Belinda Lin — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --brown: #3D2B1F;
+    --sienna: #A0522D;
+    --tan: #C4956A;
+    --tan-l: #DDB896;
+    --muted: #8C7B6E;
+    --white: #FEFCF8;
+    --cream-d: #E8DDD0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 210mm;
+    font-family: 'Noto Sans TC', sans-serif;
+    background: #fff;
+    color: var(--brown);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .resume-wrap {
+    display: grid;
+    grid-template-columns: 195px 1fr;
+    min-height: 297mm;
+  }
+
+  /* ── SIDEBAR ── */
+  .r-sidebar {
+    background: var(--brown);
+    color: var(--white);
+    padding: 28px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .r-avatar {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    border: 2px solid var(--tan);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .r-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+  .r-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--white);
+    line-height: 1.2;
+    margin-top: 8px;
+  }
+  .r-role { font-size: 9.5px; letter-spacing: 0.12em; color: var(--tan); margin-top: 4px; }
+  .r-s-title {
+    font-size: 8.5px; letter-spacing: 0.2em; color: var(--tan);
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(196,149,106,0.3);
+    margin-bottom: 6px;
+  }
+  .r-contact-item {
+    display: flex; align-items: flex-start; gap: 7px;
+    font-size: 10.5px; color: rgba(255,255,255,0.75); line-height: 1.4;
+  }
+  .r-contact-item + .r-contact-item { margin-top: 6px; }
+  .r-contact-item svg { width: 11px; height: 11px; opacity: 0.6; flex-shrink: 0; margin-top: 2px; }
+  .r-skill-row { margin-bottom: 6px; }
+  .r-skill-name { font-size: 10.5px; color: rgba(255,255,255,0.85); margin-bottom: 3px; display: flex; align-items: center; gap: 5px; }
+  .r-skill-tag { font-size: 7.5px; letter-spacing: 0.06em; padding: 1px 4px; border-radius: 2px; flex-shrink: 0; }
+  .r-skill-tag--core { background: rgba(196,149,106,0.25); color: var(--tan); }
+  .r-skill-tag--evolving { background: rgba(160,82,45,0.2); color: #d4895a; }
+  .r-skill-bar { height: 2.5px; background: rgba(255,255,255,0.1); border-radius: 99px; }
+  .r-skill-fill { height: 100%; background: var(--tan); border-radius: 99px; }
+  .r-tags { display: flex; flex-wrap: wrap; gap: 3px; }
+  .r-tag {
+    font-size: 8.5px; padding: 1.5px 6px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.65);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .r-cert { font-size: 10.5px; color: rgba(255,255,255,0.75); padding-left: 10px; position: relative; line-height: 1.5; }
+  .r-cert::before { content: ''; position: absolute; left: 0; top: 6px; width: 4px; height: 4px; border-radius: 50%; background: var(--tan); }
+  .r-cert + .r-cert { margin-top: 5px; }
+
+  /* ── MAIN ── */
+  .r-main { padding: 24px 26px; display: flex; flex-direction: column; gap: 17px; }
+  .r-summary {
+    background: #FAF7F2;
+    border-left: 3px solid var(--tan);
+    padding: 10px 14px;
+    font-size: 11px;
+    color: #4B3B30;
+    line-height: 1.8;
+    text-align: justify;
+  }
+  .r-section { display: flex; flex-direction: column; gap: 8px; }
+  .r-section-title {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'DM Serif Display', serif;
+    font-size: 13px;
+    color: var(--brown);
+    padding-bottom: 5px;
+    border-bottom: 1.5px solid var(--cream-d);
+  }
+  .r-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--tan); flex-shrink: 0; }
+  .r-exp { padding: 8px 0; border-bottom: 1px solid #F0EAE0; }
+  .r-exp:last-child { border-bottom: none; padding-bottom: 0; }
+  .r-exp-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .r-exp-org { font-size: 11.5px; font-weight: 500; color: var(--brown); }
+  .r-exp-date { font-size: 9.5px; color: var(--muted); white-space: nowrap; }
+  .r-exp-role { font-size: 10.5px; color: var(--sienna); margin-top: 2px; }
+  .r-exp-bullets { margin-top: 5px; padding-left: 12px; display: flex; flex-direction: column; gap: 2px; }
+  .r-exp-bullets li { font-size: 11px; color: #5C4A3A; line-height: 1.55; }
+  .r-edu-top { display: flex; justify-content: space-between; }
+  .r-edu-school { font-size: 11.5px; font-weight: 500; color: var(--brown); }
+  .r-edu-date { font-size: 9.5px; color: var(--muted); }
+  .r-edu-degree { font-size: 10.5px; color: var(--muted); margin-top: 2px; }
+  .r-edu-honor { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--sienna); margin-top: 4px; }
+  .r-edu-honor svg { width: 10px; height: 10px; }
+  .r-values { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+  .r-value { background: #FAF7F2; border-radius: 3px; padding: 8px 10px; }
+  .r-value-label { font-size: 11px; font-weight: 500; color: var(--brown); }
+  .r-value-desc { font-size: 9.5px; color: var(--muted); margin-top: 2px; line-height: 1.5; }
+
+  /* ── FOOTER ── */
+  .r-footer {
+    grid-column: 1 / -1;
+    background: var(--brown);
+    padding: 7px 26px;
+    display: flex; justify-content: space-between;
+  }
+  .r-footer span { font-size: 9px; color: rgba(255,255,255,0.3); letter-spacing: 0.06em; }
+
+  @media print {
+    html, body { width: 210mm; }
+    @page { size: A4; margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="resume-wrap">
+
+  <!-- Sidebar -->
+  <aside class="r-sidebar">
+    <div>
+      <div class="r-avatar">
+        <img src="images/avatar.jpg" alt="Belinda Lin" />
+      </div>
+      <div class="r-name">Belinda Lin</div>
+      <div class="r-role">行銷 · 設計 · 管理</div>
+    </div>
+
+    <div>
+      <div class="r-s-title">聯絡方式</div>
+      <div class="r-contact-item">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+        lintsai186@gmail.com
+      </div>
+      <div class="r-contact-item">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+        台灣 · 台中
+      </div>
+    </div>
+
+    <div>
+      <div class="r-s-title">核心技能</div>
+      <div class="r-skill-row">
+        <div class="r-skill-name">整合行銷 <span class="r-skill-tag r-skill-tag--core">核心</span></div>
+        <div class="r-skill-bar"><div class="r-skill-fill" style="width:90%"></div></div>
+      </div>
+      <div class="r-skill-row">
+        <div class="r-skill-name">視覺設計 <span class="r-skill-tag r-skill-tag--core">核心</span></div>
+        <div class="r-skill-bar"><div class="r-skill-fill" style="width:92%"></div></div>
+      </div>
+      <div class="r-skill-row">
+        <div class="r-skill-name">專案管理 <span class="r-skill-tag r-skill-tag--core">核心</span></div>
+        <div class="r-skill-bar"><div class="r-skill-fill" style="width:88%"></div></div>
+      </div>
+      <div class="r-skill-row">
+        <div class="r-skill-name">AI 輔助工作流 <span class="r-skill-tag r-skill-tag--evolving">進化中</span></div>
+        <div class="r-skill-bar"><div class="r-skill-fill" style="width:82%"></div></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="r-s-title">工具與軟體</div>
+      <div class="r-tags">
+        <span class="r-tag">Adobe Illustrator</span>
+        <span class="r-tag">Photoshop</span>
+        <span class="r-tag">Canva</span>
+        <span class="r-tag">Notion</span>
+        <span class="r-tag">Vocol.ai</span>
+        <span class="r-tag">Microsoft 365</span>
+        <span class="r-tag">CapCut</span>
+        <span class="r-tag">Claude</span>
+        <span class="r-tag">Perplexity</span>
+        <span class="r-tag">NotebookLM</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="r-s-title">專業證照</div>
+      <div class="r-cert">廣告工程甲級</div>
+      <div class="r-cert">廣告設計丙級</div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="r-main">
+    <div class="r-summary">
+      具平面設計與行銷研究背景，現任專案管理師，擁有超過 11 年橫跨廣告設計、活動企劃、學術行政與整合行銷的實務經驗。致力於以設計思維驅動品牌成效，在數位轉型時代持續建立清晰、有溫度的品牌溝通。
+    </div>
+
+    <div class="r-section">
+      <div class="r-section-title"><div class="r-dot"></div>工作經歷</div>
+
+      <div class="r-exp">
+        <div class="r-exp-top">
+          <div class="r-exp-org">財團法人中衛發展中心（CSD）</div>
+          <div class="r-exp-date">2025/7 — 至今</div>
+        </div>
+        <div class="r-exp-role">專案管理師 · 行銷企劃 · 台中</div>
+        <ul class="r-exp-bullets">
+          <li>負責行銷策略擬定、宣傳內容企劃與視覺溝通整合。</li>
+          <li>統籌 KOL／創作者合作規劃，推動制度推廣與品牌化操作。</li>
+          <li>跨單位、跨產業利害關係人協調與執行整合，撰寫專案計畫書與對外簡報。</li>
+        </ul>
+      </div>
+
+      <div class="r-exp">
+        <div class="r-exp-top">
+          <div class="r-exp-org">朝陽科技大學</div>
+          <div class="r-exp-date">2020/3 — 2023/9</div>
+        </div>
+        <div class="r-exp-role">計畫管考窗口 · 專案管理主管（管理 4 人以下）· 台中霧峰</div>
+        <ul class="r-exp-bullets">
+          <li>統籌 USR 計畫績效管考與整合報表，規劃執行逾 50 場講座與跨校交流活動。</li>
+          <li>擔任「2023 USR 中區社會參與跨校共學聯展」主要策展人。</li>
+          <li>協助爭取遠見 USR 大學社會責任獎、TSAA 永續行動獎等多項肯定。</li>
+        </ul>
+      </div>
+
+      <div class="r-exp">
+        <div class="r-exp-top">
+          <div class="r-exp-org">禾盛企業</div>
+          <div class="r-exp-date">2015/8 — 2020/2</div>
+        </div>
+        <div class="r-exp-role">專案規劃師 · 專案管理主管 · 台中霧峰</div>
+        <ul class="r-exp-bullets">
+          <li>策劃並執行超過百場品牌活動與商務專案，包含婚禮、尾牙、動土典禮、大型露營等。</li>
+          <li>規劃場地動線、佈置視覺與舞台設計，控管活動預算與資源配置。</li>
+        </ul>
+      </div>
+
+      <div class="r-exp">
+        <div class="r-exp-top">
+          <div class="r-exp-org">嘉禾廣告</div>
+          <div class="r-exp-date">2007/7 — 2011/6</div>
+        </div>
+        <div class="r-exp-role">設計與執行統籌 · 商業設計 · 台中北屯</div>
+        <ul class="r-exp-bullets">
+          <li>負責從設計提案至現場施作的全流程整合，提供一站式專業服務。</li>
+          <li>熟悉大型輸出、異材質應用與施工監控流程，確保空間視覺整體一致性。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="r-section">
+      <div class="r-section-title"><div class="r-dot"></div>學歷</div>
+      <div>
+        <div class="r-edu-top">
+          <div class="r-edu-school">國立彰化師範大學（NCUE）</div>
+          <div class="r-edu-date">2023 — 2025</div>
+        </div>
+        <div class="r-edu-degree">企業管理學系行銷與流通管理碩士</div>
+        <div class="r-edu-honor">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          斐陶斐榮譽會員 · 學習楷模 · 2024 Linker 行銷競賽全國第一
+        </div>
+      </div>
+      <div style="margin-top:10px">
+        <div class="r-edu-top">
+          <div class="r-edu-school">私立樹德科技大學</div>
+          <div class="r-edu-date">2003 — 2007</div>
+        </div>
+        <div class="r-edu-degree">視覺傳達設計學士</div>
+      </div>
+    </div>
+
+    <div class="r-section">
+      <div class="r-section-title"><div class="r-dot"></div>核心特質</div>
+      <div class="r-values">
+        <div class="r-value">
+          <div class="r-value-label">細節敏銳</div>
+          <div class="r-value-desc">對視覺與文字品質有高度要求，每件輸出物都精準且有目的</div>
+        </div>
+        <div class="r-value">
+          <div class="r-value-label">追求效益</div>
+          <div class="r-value-desc">成效導向思維，在創意與資源最佳運用之間取得最佳平衡</div>
+        </div>
+        <div class="r-value">
+          <div class="r-value-label">應變靈活</div>
+          <div class="r-value-desc">快速整合既有資源，彈性調整執行路徑，讓計畫在變動中仍能落地</div>
+        </div>
+        <div class="r-value">
+          <div class="r-value-label">踏實穩健</div>
+          <div class="r-value-desc">系統性思考，確保長遠目標在每個執行環節持續落實</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="r-footer">
+    <span>Belinda Lin</span>
+    <span>lintsai186@gmail.com</span>
+    <span>更新於 2026 年 5 月</span>
+  </div>
+</div>
+</body>
+</html>
