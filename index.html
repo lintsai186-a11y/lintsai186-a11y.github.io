@@ -706,6 +706,28 @@
       border-color: var(--tan);
       box-shadow: 0 4px 16px rgba(61,43,31,0.06);
     }
+    .social-card-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .social-avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 2px solid var(--tan-l);
+      background: var(--cream-d);
+    }
+    .social-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .social-card-title { flex: 1; min-width: 0; }
     .social-platform-badge {
       display: inline-flex;
       align-items: center;
@@ -1659,6 +1681,7 @@
         name: '產銷履歷大小事',
         url: 'https://lin.ee/yA2b6Wb',
         period: '2025/7 — 至今',
+        avatar: 'images/line-sanxiao.png',
         roles: ['內容規劃', '文案撰寫', '視覺設計'],
         stats: [
           { num: '5,453', label: '好友數', accent: true },
@@ -1789,10 +1812,13 @@
       socialSection.classList.add('show');
       socialSection.innerHTML = data.social.map(item => `
         <div class="social-card">
-          <span class="social-platform-badge ${item.platformKey}">${item.platform}</span>
-          <div>
-            <div class="social-card-name">${item.name}</div>
-            <div class="social-card-period">${item.period}</div>
+          <div class="social-card-top">
+            ${item.avatar ? `<div class="social-avatar"><img src="${item.avatar}" alt="${item.name}" loading="lazy" /></div>` : ''}
+            <div class="social-card-title">
+              <span class="social-platform-badge ${item.platformKey}">${item.platform}</span>
+              <div class="social-card-name">${item.name}</div>
+              <div class="social-card-period">${item.period}</div>
+            </div>
           </div>
           <div class="social-card-roles">
             ${item.roles.map(r => `<span class="social-role-tag">${r}</span>`).join('')}
