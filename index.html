@@ -1688,6 +1688,33 @@
           { num: '4,758', label: '本週傳送' },
           { num: '46',    label: '活躍聊天室' }
         ]
+      },
+      {
+        platform: 'Facebook',
+        platformKey: 'fb',
+        name: 'NSTC 南投永續旅遊行動',
+        url: 'https://www.facebook.com/nstc2030/',
+        period: '2025/7 — 至今',
+        avatar: 'images/fb-nstc.jpg',
+        roles: ['內容規劃', '文案撰寫', '圖卡排版']
+      },
+      {
+        platform: 'Facebook',
+        platformKey: 'fb',
+        name: 'WOW Kids 孩子草地派對',
+        url: 'https://www.facebook.com/WOWPartyKids/',
+        period: '2018 — 2020',
+        avatar: 'images/fb-wow.jpg',
+        roles: ['內容規劃', '文案撰寫', '圖卡設計', '照片及影片拍攝']
+      },
+      {
+        platform: '官方網站',
+        platformKey: 'web',
+        name: '南投永續旅遊網 — 永續旅遊專區',
+        url: 'https://travel.nantou.gov.tw/sustainable-tourism/',
+        period: '2025/7 — 至今',
+        roles: ['圖文上架', '版面規劃'],
+        note: '中 · 英 · 日 · 韓 四語版本'
       }
     ]
   };
@@ -1822,6 +1849,7 @@
           </div>
           <div class="social-card-roles">
             ${item.roles.map(r => `<span class="social-role-tag">${r}</span>`).join('')}
+            ${item.note ? `<span class="social-role-tag" style="background:rgba(160,82,45,0.08);color:var(--sienna)">${item.note}</span>` : ''}
           </div>
           ${item.stats ? `
             <div class="social-stats">
