@@ -307,6 +307,18 @@
       border-color: var(--brown);
     }
 
+    .tab-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-top: 20px;
+      padding: 14px 20px;
+      border-left: 2px solid var(--tan-l);
+      background: var(--white);
+      display: none;
+    }
+    .tab-desc.show { display: block; }
+
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -1300,10 +1312,11 @@
       <button class="p-tab" data-cat="visual">形象布置</button>
       <button class="p-tab" data-cat="storefront">店面外觀</button>
       <button class="p-tab" data-cat="kol">KOL 合作</button>
-      <button class="p-tab" data-cat="social">社群與平台經營</button>
+      <button class="p-tab" data-cat="social">社群平台經營</button>
     </div>
   </div>
 
+  <div id="tabDesc" class="tab-desc"></div>
   <div id="pGrid" class="portfolio-grid"></div>
   <div id="kolEmpty" class="kol-empty">
     <div class="kol-empty-sym">◈</div>
@@ -1568,6 +1581,13 @@
   // Portfolio data — Google Drive thumbnail helper
   const gd = (id, sz) => `https://drive.google.com/thumbnail?id=${id}&sz=${sz || 'w800'}`;
 
+  const tabDescs = {
+    print:      '涵蓋品牌識別、名片、海報及翻頁小冊，熟稔印刷規格與色彩管理，獨立完成從概念到完稿輸出的全流程。',
+    visual:     '承接企業尾牙、家庭日等活動的軟硬體整合規劃，從主視覺延伸至現場執行，熟悉布幔、展板、燈光等異材質的應用與組合，能掌控整體氛圍呈現與預算結構。',
+    storefront: '參與實體店面的外觀設計規劃，了解施工流程、材質選配與成本估算，具備將品牌視覺落地為空間識別的實作經驗。',
+    social:     '具備 Facebook 粉絲專頁、官方網站與 LINE 官方帳號的日常經營經驗，涵蓋內容企劃、貼文撰寫與受眾互動管理，能依平台特性調整語氣與視覺風格。',
+  };
+
   const data = {
     print: [
       { src: 'images/lym-moon-logo.jpg',           tag: '品牌識別' },
@@ -1606,7 +1626,7 @@
         {
           year: '2023',
           title: '2023 USR 社會參與跨校共學 中區聯展',
-          desc: '擔任主要策展人，整合中區各大學 USR 計畫成果，統籌策展架構與參展內容，建立區域型學習交流平台。',
+          desc: '「大學傳薪・堅韌永續」── 集結逾 30 所大專院校、近 60 件 USR 計畫，於 2023 年 12 月在臺中文化部文化資產園區展出兩日。擔任主要策展人，統籌空間規劃、視覺設計與跨校協調，呈現大學走入在地、推動地方創生與社會關懷的成果。',
           ytId: '1A8MznajiTc',
           news: [
             { type: 'event', badge: '活動頁面', source: 'Accupass', date: '2023.12.08–09', title: '2023 USR 社會參與跨校共學 中區聯展', url: 'https://www.accupass.com/event/2310200740011924843949' },
@@ -1745,6 +1765,15 @@
     kolGrid.classList.remove('show');
     curateSection.classList.remove('show');
     socialSection.classList.remove('show');
+
+    // Tab description
+    const tabDescEl = document.getElementById('tabDesc');
+    if (tabDescs[cat]) {
+      tabDescEl.textContent = tabDescs[cat];
+      tabDescEl.classList.add('show');
+    } else {
+      tabDescEl.classList.remove('show');
+    }
 
     if (cat === 'curate') {
       const d = data.curate;
