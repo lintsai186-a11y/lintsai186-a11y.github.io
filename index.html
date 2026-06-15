@@ -574,6 +574,15 @@
     }
     .curate-news-arrow { color: var(--tan); flex-shrink: 0; }
     .curate-news-arrow svg { width: 14px; height: 14px; }
+    .curate-news-thumb {
+      width: 80px;
+      min-width: 80px;
+      height: 54px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
 
     /* ── CURATE EVENT CARD ── */
     .curate-event {
@@ -1781,13 +1790,13 @@
       events: [
         {
           year: '2024',
-          title: '2024 LINKER 無限可能全國大專院校行銷創意競賽 ── 行銷文案企劃組 第一名',
+          title: '2024 LINKER 無限可能全國大專院校行銷創意競賽<br>行銷文案企劃組 第一名',
           desc: '以彰化花壇 60 年茉莉花茶廠「銨麒企業」為研究對象，完成 SWOT、STP、4C 市場分析與品牌再定位，提出五大行銷方案：子品牌「純愛茉莉花」命名、店面招牌形象改造、AR 沉浸體驗設計、KOL/KOC 合作矩陣、農遊遊程規劃（彰化農遊大富翁 × 半線農遊美食一日遊），49 頁完整企劃書於全國 180 組隊伍中脫穎而出，獲評審評選為行銷文案企劃組第一名。',
           ytId: 'Q1rZFIrb1wg',
           news: [
-            { type: 'press', badge: '媒體報導', source: '彰化新聞報', date: '2024.06.21', title: 'LINKER 無限可能全國大專創意行銷競賽頒獎', url: 'https://www.changhuanews.com/2024/06/news-2108.html' },
-            { type: 'press', badge: '媒體報導', source: '彰化新聞報', date: '2024.06.21', title: '僑光科技大學 Linker 產官學 USR 競賽頒獎典禮', url: 'https://www.changhuanews.com/2024/06/news-2110.html' },
-            { type: 'press', badge: '媒體報導', source: '創新聞', date: '2024.06.21', title: '青年創意飛揚 Linker 競賽助力彰化產業再生', url: 'https://pronews.tw/2024/06/21/62124/' }
+            { type: 'press', badge: '媒體報導', source: '彰化新聞報', date: '2024.06.21', title: 'Linker 無限可能全國大專創意行銷競賽頒獎', url: 'https://www.changhuanews.com/2024/06/news-2108.html', thumb: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhL7CKN50v-ySsW67PmnZloxvFCCUyrhlIDjueKV7xajLICQs3KbzUzJxe-896CQtNrnEfhieOQ4zas-FIMES4WrPS4lZzb4Hoo6fCZwfmzTLRJ0cXw2m57UPMWJgK67fQYZehGGCalmOfNCFJJUAxWFFakZDWW1JRRYigZAAUE9P-DgaKlh9y5qHjXjDM/s600/Linkerer%E7%84%A1%E9%99%90%E5%8F%AF%E8%83%BD%E3%80%80%E5%85%A8%E5%9C%8B%E5%A4%A7%E5%B0%88%E5%89%B5%E6%84%8F%E8%A1%8C%E9%8A%B7%E7%AB%B6%E8%B3%BD%E9%A0%92%E7%8D%8E1.JPG' },
+            { type: 'press', badge: '媒體報導', source: '彰化新聞報', date: '2024.06.21', title: '彰師大奪 Linker 競賽行銷文案企劃組第一名', url: 'https://www.changhuanews.com/2024/06/news-2110.html', thumb: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPXazjVe8ACkVk-hByEqvW8LboD_whGKVeybWF2e0zOmTCQUQ1_u-9-HgfxrSSD_sMGsfDaArWtWo6aa0wAE_OPOGRJ9nemHs6mGGoppeMs2Qmw6nYHFO6Spg2axglWUDdUf4U05ybZ1xIHXPCu2JYWl16Op4SIrNYXWzEFmnXZh4pBqkYwenXs0GC7gQ/s600/%E5%83%91%E5%85%89%E7%A7%91%E5%A4%A7Linker%E7%94%A2%E5%AE%98%E5%AD%B8USR%E7%AB%B6%E8%B3%BD%E9%A0%92%E7%8D%8E%E5%85%B8%E7%A6%AE1.jpg' },
+            { type: 'press', badge: '媒體報導', source: '創新聞', date: '2024.06.21', title: '青年創意飛揚 Linker 競賽助力彰化產業再生', url: 'https://pronews.tw/2024/06/21/62124/', thumb: 'https://pronews.tw/wp-content/uploads/2024/06/00ecd0cc8e8b035eba18168b5f639327.jpg' }
           ]
         }
       ]
@@ -1982,6 +1991,7 @@
               ${ev.news && ev.news.length ? `<div class="curate-event-news">
                 ${ev.news.map(n => `
                   <a class="curate-news-card" href="${n.url}" target="_blank" rel="noopener">
+                    ${n.thumb ? `<img class="curate-news-thumb" src="${n.thumb}" alt="" loading="lazy" />` : ''}
                     <span class="curate-news-badge type-${n.type}">${n.badge}</span>
                     <span class="curate-news-body">
                       <span class="curate-news-title">${n.title}</span>
