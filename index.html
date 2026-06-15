@@ -404,6 +404,32 @@
       margin-top: 24px;
     }
     .curate-section.show { display: block; }
+
+    /* ── MARKETING section ── */
+    .marketing-section {
+      display: none;
+      margin-top: 24px;
+    }
+    .marketing-section.show { display: block; }
+    .marketing-empty {
+      display: none;
+      margin-top: 24px;
+      padding: 48px 24px;
+      text-align: center;
+      border: 1px dashed var(--tan-l);
+    }
+    .marketing-empty.show { display: block; }
+    .marketing-empty-sym {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      color: var(--tan);
+      margin-bottom: 14px;
+    }
+    .marketing-empty-txt {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
     .curate-group { margin-bottom: 48px; }
     .curate-photo-grid {
       display: grid;
@@ -1307,12 +1333,13 @@
       <h2 class="section-title">精選<br><em>作品</em></h2>
     </div>
     <div class="portfolio-tabs">
-      <button class="p-tab active" data-cat="print">印刷設計</button>
-      <button class="p-tab" data-cat="curate">策展</button>
-      <button class="p-tab" data-cat="visual">形象布置</button>
-      <button class="p-tab" data-cat="storefront">店面外觀</button>
+      <button class="p-tab active" data-cat="curate">策展</button>
       <button class="p-tab" data-cat="kol">KOL 合作</button>
+      <button class="p-tab" data-cat="marketing">行銷專案</button>
       <button class="p-tab" data-cat="social">社群平台經營</button>
+      <button class="p-tab" data-cat="print">印刷設計</button>
+      <button class="p-tab" data-cat="storefront">店面外觀</button>
+      <button class="p-tab" data-cat="visual">形象布置</button>
     </div>
   </div>
 
@@ -1322,8 +1349,13 @@
     <div class="kol-empty-sym">◈</div>
     <p class="kol-empty-txt">合作案例即將上線</p>
   </div>
+  <div id="marketingEmpty" class="marketing-empty">
+    <div class="marketing-empty-sym">◈</div>
+    <p class="marketing-empty-txt">行銷專案內容即將上線</p>
+  </div>
   <div id="kolGrid" class="kol-grid"></div>
   <div id="curateSection" class="curate-section"></div>
+  <div id="marketingSection" class="marketing-section"></div>
   <div id="socialSection" class="social-section"></div>
 </section>
 
@@ -1586,6 +1618,7 @@
     visual:     '承接企業尾牙、家庭日等活動的軟硬體整合規劃，從主視覺延伸至現場執行，熟悉布幔、展板、燈光等異材質的應用與組合，能掌控整體氛圍呈現與預算結構。',
     storefront: '參與實體店面的外觀設計規劃，了解施工流程、材質選配與成本估算，具備將品牌視覺落地為空間識別的實作經驗。',
     social:     '具備 Facebook 粉絲專頁、官方網站與 LINE 官方帳號的日常經營經驗，涵蓋內容企劃、貼文撰寫與受眾互動管理，能依平台特性調整語氣與視覺風格。',
+    marketing:  '統籌整合行銷專案的策略規劃與執行落地，涵蓋活動企劃、跨媒體溝通、品牌推廣與成效追蹤，具備從專案啟動到交付的完整實務經歷。',
   };
 
   const data = {
@@ -1743,10 +1776,13 @@
         roles: ['圖文上架', '版面規劃'],
         note: '中 · 英 · 日 · 韓 四語版本'
       }
-    ]
+    ],
+    marketing: {
+      events: []
+    }
   };
 
-  let curCat = 'print';
+  let curCat = 'curate';
   let curIdx = 0;
   let curItems = [];
 
@@ -1757,6 +1793,8 @@
     const empty = document.getElementById('kolEmpty');
     const kolGrid = document.getElementById('kolGrid');
     const curateSection = document.getElementById('curateSection');
+    const marketingSection = document.getElementById('marketingSection');
+    const marketingEmpty = document.getElementById('marketingEmpty');
     const socialSection = document.getElementById('socialSection');
 
     // Reset all containers
@@ -1764,6 +1802,8 @@
     empty.classList.remove('show');
     kolGrid.classList.remove('show');
     curateSection.classList.remove('show');
+    marketingSection.classList.remove('show');
+    marketingEmpty.classList.remove('show');
     socialSection.classList.remove('show');
 
     // Tab description
@@ -1904,6 +1944,50 @@
       return;
     }
 
+    if (cat === 'marketing') {
+      const d = data.marketing;
+      if (!d.events || !d.events.length) {
+        marketingEmpty.classList.add('show');
+      } else {
+        marketingSection.classList.add('show');
+        marketingSection.innerHTML = d.events.map(ev => `
+          <div class="curate-event">
+            <div class="curate-event-visual">
+              ${ev.photoId
+                ? `<img src="${gd(ev.photoId)}" alt="${ev.title}" loading="lazy" />`
+                : `<div class="curate-video-wrap">
+                    <iframe src="https://www.youtube.com/embed/${ev.ytId}"
+                      title="${ev.title}"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen loading="lazy"></iframe>
+                   </div>`
+              }
+            </div>
+            <div class="curate-event-info">
+              <div class="curate-event-year">${ev.year}</div>
+              <div class="curate-event-title">${ev.title}</div>
+              <div class="curate-event-desc">${ev.desc}</div>
+              ${ev.news && ev.news.length ? `<div class="curate-event-news">
+                ${ev.news.map(n => `
+                  <a class="curate-news-card" href="${n.url}" target="_blank" rel="noopener">
+                    <span class="curate-news-badge type-${n.type}">${n.badge}</span>
+                    <span class="curate-news-body">
+                      <span class="curate-news-title">${n.title}</span>
+                      <span class="curate-news-meta">${n.source} · ${n.date}</span>
+                    </span>
+                    <span class="curate-news-arrow">
+                      <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+                    </span>
+                  </a>
+                `).join('')}
+              </div>` : ''}
+            </div>
+          </div>
+        `).join('');
+      }
+      return;
+    }
+
     grid.style.display = 'grid';
     const isPrint = cat === 'print';
     grid.innerHTML = curItems.map((item, i) => `
@@ -1925,7 +2009,7 @@
     });
   });
 
-  renderPortfolio('print');
+  renderPortfolio('curate');
 
   // Lightbox
   function openLb(i) {
