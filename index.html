@@ -1679,8 +1679,9 @@
         {
           year: '2023',
           title: '2023 亞太永續行動博覽會',
-          desc: '帶領朝陽科技大學 USR 計畫團隊參與 2023 亞太永續行動博覽會，負責 F19 攤位規劃與現場執行，展示「幼老共圓」、「廢墟的力度」、「八卦山下」三大子計畫成果。活動匯聚逾 120 個單位、400+ 個攤位，為學校 USR 計畫建立對外溝通管道。',
+          desc: '帶領朝陽科技大學 USR 計畫團隊參與 2023 亞太永續行動博覽會（F19），統籌攤位規劃、展示設計與現場接待，呈現「幼老共圓」、「廢墟的力度」、「八卦山下」三大子計畫成果，同步對外招募 CSR 企業合作夥伴，為計畫爭取社會資源挹注與長期支持。活動匯聚逾 120 個單位、400+ 個攤位，是台灣規模最大的永續年度會展之一。',
           src: 'images/apt-usr-2023.jpg',
+          objPos: 'center top',
           news: [
             { type: 'press', badge: '媒體報導', source: '工商時報', date: '2023.07.20', title: '台灣永續國家隊 7/21 世貿放閃', url: 'https://www.ctee.com.tw/news/20230720701323-439901', thumb: 'https://images.ctee.com.tw/newsphoto/2023-07-20/1024/20230720701324.jpg' }
           ]
@@ -1854,7 +1855,7 @@
             ${ev.photoId
               ? `<img src="${gd(ev.photoId)}" alt="${ev.title}" loading="lazy" />`
               : ev.src
-              ? `<img src="${ev.src}" alt="${ev.title}" loading="lazy" />`
+              ? `<img src="${ev.src}" alt="${ev.title}" loading="lazy" style="${ev.objPos ? 'object-position:' + ev.objPos : ''}" />`
               : `<div class="curate-video-wrap">
                   <iframe src="https://www.youtube.com/embed/${ev.ytId}"
                     title="${ev.title}"
