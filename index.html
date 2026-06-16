@@ -574,6 +574,8 @@
     }
     .curate-news-arrow { color: var(--tan); flex-shrink: 0; }
     .curate-news-arrow svg { width: 14px; height: 14px; }
+    .ai-demo-btn { display:inline-flex;align-items:center;gap:6px;margin-top:18px;padding:9px 20px;background:var(--sienna);color:#fff;border-radius:20px;font-size:0.84rem;text-decoration:none;font-weight:500;transition:opacity .2s; }
+    .ai-demo-btn:hover { opacity:.82; }
     .curate-news-thumb {
       width: 80px;
       min-width: 80px;
@@ -1345,6 +1347,7 @@
       <button class="p-tab active" data-cat="curate">策展</button>
       <button class="p-tab" data-cat="kol">KOL 合作</button>
       <button class="p-tab" data-cat="marketing">行銷專案</button>
+      <button class="p-tab" data-cat="ai">AI 協作</button>
       <button class="p-tab" data-cat="social">社群平台經營</button>
       <button class="p-tab" data-cat="print">印刷設計</button>
       <button class="p-tab" data-cat="storefront">店面外觀</button>
@@ -1366,6 +1369,7 @@
   <div id="curateSection" class="curate-section"></div>
   <div id="marketingSection" class="marketing-section"></div>
   <div id="socialSection" class="social-section"></div>
+  <div id="aiSection" class="curate-section"></div>
 </section>
 
 <!-- ══════════ TOOLS ══════════ -->
@@ -1628,6 +1632,7 @@
     storefront: '參與實體店面的外觀設計規劃，了解施工流程、材質選配與成本估算，具備將品牌視覺落地為空間識別的實作經驗。',
     social:     '具備 Facebook 粉絲專頁、官方網站與 LINE 官方帳號的日常經營經驗，涵蓋內容企劃、貼文撰寫與受眾互動管理，能依平台特性調整語氣與視覺風格。',
     marketing:  '行銷競賽企劃作品，從市場分析到策略提案，展現品牌診斷與整合行銷規劃的思考框架。',
+    ai:         '以 AI 為協作夥伴，從概念發想到產品上線，獨立完成互動體驗工具的設計與開發，展現整合行銷思維與數位產品執行力。',
   };
 
   const data = {
@@ -1810,6 +1815,28 @@
           ]
         }
       ]
+    },
+    ai: {
+      projects: [
+        {
+          year: '2025',
+          title: '今日幸運',
+          label: 'Web App · 命理 × 個人化體驗',
+          url: 'https://luckyvibe888.netlify.app/',
+          bg: 'linear-gradient(135deg, #f5e6c8 0%, #e8c07a 100%)',
+          icon: '✨',
+          desc: '上班族每天面對穿搭決策疲勞，加上現代人心靈能量的匱乏，這款 App 以西方生命靈數理論（Pythagorean Numerology）為基礎，在出門前推算每日個人能量色與幸運物，讓小小的每日指引成為一天的正向開場。'
+        },
+        {
+          year: '2025',
+          title: 'Nova-air 除臭場景體驗',
+          label: '互動 Demo · 品牌行銷 × 導購引流',
+          url: 'https://bespoke-semolina-af728c.netlify.app/app.html',
+          bg: 'linear-gradient(135deg, #d4ede9 0%, #7ecdc8 100%)',
+          icon: '🐾',
+          desc: '以輕鬆的互動情境遊戲為切入點，引導飼主選擇貓砂盆、地板清潔或室內空氣等日常難題場景，透過問題共鳴建立品牌信任感，進而自然導流至 Nova-air 官網完成轉換。'
+        }
+      ]
     }
   };
 
@@ -1827,6 +1854,7 @@
     const marketingSection = document.getElementById('marketingSection');
     const marketingEmpty = document.getElementById('marketingEmpty');
     const socialSection = document.getElementById('socialSection');
+    const aiSection = document.getElementById('aiSection');
 
     // Reset all containers
     grid.style.display = 'none';
@@ -1836,6 +1864,7 @@
     marketingSection.classList.remove('show');
     marketingEmpty.classList.remove('show');
     socialSection.classList.remove('show');
+    aiSection.classList.remove('show');
 
     // Tab description
     const tabDescEl = document.getElementById('tabDesc');
@@ -2020,6 +2049,29 @@
           </div>
         `).join('');
       }
+      return;
+    }
+
+    if (cat === 'ai') {
+      aiSection.classList.add('show');
+      aiSection.innerHTML = data.ai.projects.map(p => `
+        <div class="curate-event">
+          <div class="curate-event-visual ai-app-preview" style="background:${p.bg};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;">
+            <span style="font-size:3rem;line-height:1;">${p.icon}</span>
+            <span style="font-size:1.05rem;font-weight:600;color:var(--dark-brown);letter-spacing:0.03em;">${p.title}</span>
+          </div>
+          <div class="curate-event-info">
+            <div class="curate-event-year">${p.year}</div>
+            <div class="curate-event-title">${p.title}</div>
+            <div style="margin:4px 0 12px;font-size:0.8rem;color:var(--sienna);letter-spacing:0.04em;font-weight:500;">${p.label}</div>
+            <div class="curate-event-desc">${p.desc}</div>
+            <a class="ai-demo-btn" href="${p.url}" target="_blank" rel="noopener">
+              前往 Demo
+              <svg viewBox="0 0 20 20" fill="currentColor" style="width:13px;height:13px;flex-shrink:0;"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>
+            </a>
+          </div>
+        </div>
+      `).join('');
       return;
     }
 
